@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+
+<nav class="bg-secondary mb-3" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb-alt mb-0">
+        <li class="breadcrumb-item">
+            <a routerLink="/"><i class="cxi-home"></i></a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Contactanos</li>
+        </ol>
+    </div>
+</nav>
+
+<section class="container pt-3 pt-md-4">
+    <div class="row">
+
+        <!-- Tabs content -->
+        <div class="col-md-12 ml-auto pt-md-2">
+        <div class="tab-content pb-2 pb-sm-4 pb-lg-5">
+
+            <!-- Tab: Contact Us -->
+            <div id="contact" class="tab-pane pb-5 fade show active" role="tabpanel" aria-labelledby="contact-tab">
+            <p class="text-dark lead font-weight-bold">Si tiene alguna pregunta, inquietud o comentario, ¡nos encantaría saber de usted! Envíe su consulta utilizando cualquiera de los siguientes métodos:</p>
+            <div class="nav-dark mb-5">
+                <a href="tel:4055550128" class="nav-link d-flex align-items-center font-weight-normal p-0 mb-2">
+                <i class="cxi-iphone text-primary lead mr-2"></i>
+                <span>(405) 555-0128</span>
+                </a>
+                <a href="mailto:support@example.com" class="nav-link d-flex align-items-center font-weight-normal p-0 mb-2">
+                <i class="cxi-mail text-primary lead mr-2"></i>
+                <span>eCommerceCentralPark@mail.com</span>
+                </a>
+                <a href="#" class="nav-link d-flex align-items-center font-weight-normal p-0 mb-2">
+                <i class="cxi-messenger text-primary lead mr-2"></i>
+                <span>Messenger</span>
+                </a>
+                <a href="#" class="nav-link d-flex align-items-center font-weight-normal p-0 mb-2">
+                <i class="cxi-twitter text-primary lead mr-2"></i>
+                <span>Twitter</span>
+                </a>
+            </div>
+            <p class="text-dark lead font-weight-bold pb-2">O póngase en contacto con nosotros completando el siguiente formulario:</p>
+            <form class="needs-validation" novalidate="">
+                <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="cont-name">Nombre *</label>
+                    <input type="text" id="cont-name" class="form-control form-control-lg" placeholder="Juan Rodriguez" required="">
+                    <div class="invalid-feedback">Please let us know your name.</div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="cont-email">Email *</label>
+                    <input type="email" id="cont-email" class="form-control form-control-lg" placeholder="jrodriguez@example.com" required="">
+                    <div class="invalid-feedback">Please provide valid email address.</div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="cont-phone">Telefono</label>
+                    <input type="text" id="cont-phone" class="form-control form-control-lg bg-0" data-format="custom" data-delimiter="-" data-blocks="2 3 4" placeholder="00-000-0000">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="cont-subject">Asunto</label>
+                    <input type="text" id="cont-subject" class="form-control form-control-lg bg-0" placeholder="Titulo del mensaje">
+                </div>
+                <div class="col-12 form-group">
+                    <label for="cont-message">Mensaje *</label>
+                    <textarea id="cont-message" class="form-control form-control-lg" rows="5" placeholder="Write your message here" required=""></textarea>
+                    <div class="invalid-feedback">Escribe tu mensaje...</div>
+                </div>
+                <div class="col-lg-4 col-sm-5 pt-2">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar Mensaje</button>
+                </div>
+                </div>
+            </form>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

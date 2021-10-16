@@ -5,12 +5,12 @@
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
     <div class="navbar navbar-expand-lg navbar-light bg-light navbar-sticky" data-fixed-element>
         <div class="container px-0 px-xl-3">
-            <a href="index.html" class="navbar-brand order-lg-1 mr-0 pr-lg-3 mr-lg-4">
-                <img src="assets/img/ecommerce/logo.svg" alt="Createx Logo" width="130">
+            <a routerLink="/" class="navbar-brand order-lg-1 mr-0 pr-lg-3 mr-lg-4">
+                <img src="assets/img/ecommerce/logoNavbar.png" alt="Createx Logo" width="130">
             </a>
             <!-- Search desktop -->
             <div class="input-group-overlay ml-4 d-lg-block d-none order-lg-3" style="max-width: 21rem;">
-                <input class="form-control appended-form-control" type="text" placeholder="Search for products...">
+                <input class="form-control appended-form-control" type="text" placeholder="Buscar productos...">
                 <div class="input-group-append-overlay">
                     <span class="input-group-text"><i class="cxi-search lead align-middle"></i></span>
                 </div>
@@ -20,15 +20,16 @@
                 <ul class="nav nav-tools flex-nowrap">
                     <li class="nav-item d-lg-block d-none mb-0">
                         <a href="account-wishlist.html" class="nav-tool">
-                            <i class="cxi-heart nav-tool-icon"></i>
-                            <span class="nav-tool-label">2</span>
+                            <!-- <i class="cxi-heart nav-tool-icon"></i> -->
+                            <span class="nav-tool-label">Iniciar Sesion</span>
                         </a>
                     </li>
                     <li class="divider-vertical mb-0 d-lg-block d-none"></li>
+                    
                     <li class="nav-item align-self-center mb-0">
                         <a href="#" class="nav-tool pr-lg-0" data-toggle="offcanvas" data-target="cart">
                             <i class="cxi-cart nav-tool-icon"></i>
-                            <span class="badge badge-success align-middle mt-n1 ml-2 px-2 py-1 font-size-xs">4</span>
+                            <span class="badge badge-success align-middle mt-n1 ml-2 px-2 py-1 font-size-xs">0</span>
                         </a>
                     </li>
                     <li class="divider-vertical mb-0 d-lg-none d-block"></li>
@@ -45,7 +46,7 @@
                 <!-- Search mobile -->
                 <div class="input-group-overlay form-group mb-0 d-lg-none d-block">
                     <input type="text" class="form-control prepended-form-control rounded-0 border-0"
-                        placeholder="Search for products...">
+                        placeholder="Buscar productos...">
                     <div class="input-group-prepend-overlay">
                         <span class="input-group-text">
                             <i class="cxi-search font-size-lg align-middle mt-n1"></i>
@@ -55,18 +56,21 @@
                 <!-- Menu -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Home</a>
+                        <a routerLink="/" class="nav-link">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shop</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tienda</a>
                         <ul class="dropdown-menu">
                             <li><a href="shop-catalog.html" class="dropdown-item">Catalog with Filters</a></li>
                             <li><a href="shop-single.html" class="dropdown-item">Single Product</a></li>
                             <li><a href="checkout.html" class="dropdown-item">Checkout</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Megamenu</a>
+                    <li class="nav-item">
+                        <a routerLink="/contacto" routerLinkActive="active" class="nav-link">Contacto</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown mega-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Menú</a>
                         <div class="dropdown-menu">
                             <div class="container pt-lg-1 pb-lg-3">
                                 <div class="row">
@@ -141,7 +145,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>
