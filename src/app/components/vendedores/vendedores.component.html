@@ -1,0 +1,253 @@
+<app-navbar></app-navbar>
+
+<!-- Breadcrumb -->
+<nav class="bg-secondary mb-3" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb-alt mb-0">
+            <li class="breadcrumb-item">
+                <a routerLink="/"><i class="cxi-home"></i></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Locales comerciales</li>
+        </ol>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid bg-secondary " style="height: 30vh;">
+    <div class="container">
+      <h1 class="display-2">Locales comerciales</h1>
+      <p class="lead">Listado de todos los locales comerciales de parque central disponibles</p>
+    </div>
+</div>
+
+  <!-- <div class="bg-size-cover py-xl-6 tns-item tns-slide-active tns-fadeIn" style="background-image: url('assets/img/ecommerce/home/hero-slider/03.jpg&quot'); left: 0%;">
+    <div class="container pt-5 pb-6">
+      <div class="row pb-lg-6">
+        <div class="col-lg-6 offset-lg-1 offset-xl-0 pb-4 pb-md-6">
+          <h3 class="font-size-lg text-uppercase cs-from-left cs-delay-1">Limited Edition</h3>
+          <h2 class="display-2 mb-lg-5 pb-3 cs-from-left">Leather Issue</h2>
+          <div class="mb-4 cs-scale-up cs-delay-2">
+            <a href="shop-catalog.html" class="btn btn-outline-primary btn-lg">Shop the collection</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Locales comerciales</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+  </div> -->
+
+<!-- Page container -->
+<section class="container pt-3 pb-5 pb-md-6 mb-2 mb-lg-0">
+
+
+    <!-- Toolbar + Pagination -->
+    <div class="row mb-4 pb-2">
+        <div class="col-md-9">
+            <div class="d-flex align-items-center pt-md-4">
+                
+                <div class="form-inline flex-nowrap d-none d-sm-flex mr-3 mr-xl-5">
+                    <label for="pager-top" class="font-weight-bold text-nowrap mr-2 pr-1 d-none d-lg-block">Ver</label>
+                    <select id="pager-top" class="custom-select">
+                        <option>12</option>
+                        <option>24</option>
+                        <option>48</option>
+                        <option>72</option>
+                        <option>96</option>
+                    </select>
+                    <span class="font-size-sm text-muted text-nowrap ml-2 d-none d-lg-block">Locales por pagina</span>
+                </div>
+                <nav class="ml-auto" aria-label="Pagination">
+                    <ul class="pagination mb-0">
+                        <li class="page-item d-sm-none">
+                            <span class="page-link page-link-static">1 / 5</span>
+                        </li>
+                        <li class="page-item active d-none d-sm-block" aria-current="page">
+                            <span class="page-link">1
+                                <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="cxi-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row flex-lg-nowrap">
+
+        <!-- Product grid -->
+        <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3" data-filters-columns>
+
+                <!-- Item -->
+                <div class="col pb-sm-2 mb-grid-gutter">
+                    <div class="card card-product mx-auto">
+                        <div class="card-product-img">
+                            <a routerLink="/producto/detalles" class="card-img-top">
+                                <img src="assets/img/ecommerce/sellers/01.jpg"
+                                    alt="Product image">
+                            </a>
+                            <!-- <div class="card-product-widgets-top">
+                                <div class="star-rating ml-auto">
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                </div>
+                            </div> -->
+                            <div class="card-product-widgets-bottom">
+                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
+                                    title="Add to wishlist"></a>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <h3 class="card-product-title text-truncate mb-2 text-center">
+                                <a routerLink="/producto/detalles" class="nav-link"><b>GAMER MANIA</b></a>
+                            </h3>
+                            <div class="d-flex align-items-center">
+                                <span class="h5 d-inline-block mb-0 mx-auto">Local A3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="col pb-sm-2 mb-grid-gutter">
+                    <div class="card card-product mx-auto">
+                        <div class="card-product-img">
+                            <a routerLink="/producto/detalles" class="card-img-top">
+                                <img src="assets/img/ecommerce/sellers/02.jpg"
+                                    alt="Product image">
+                            </a>
+                            <!-- <div class="card-product-widgets-top">
+                                <div class="star-rating ml-auto">
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                </div>
+                            </div> -->
+                            <div class="card-product-widgets-bottom">
+                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
+                                    title="Add to wishlist"></a>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <h3 class="card-product-title text-truncate mb-2 text-center">
+                                <a routerLink="/producto/detalles" class="nav-link"><b>MACC PC</b></a>
+                            </h3>
+                            <div class="d-flex align-items-center">
+                                <span class="h5 d-inline-block mb-0 mx-auto">Local A8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="col pb-sm-2 mb-grid-gutter">
+                    <div class="card card-product mx-auto">
+                        <div class="card-product-img">
+                            <a routerLink="/nombre-de-local/productos" class="card-img-top">
+                                <img src="assets/img/ecommerce/sellers/03.jpg"
+                                    alt="Product image">
+                            </a>
+                            <!-- <div class="card-product-widgets-top">
+                                <div class="star-rating ml-auto">
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                    <i class="sr-star cxi-star-filled active"></i>
+                                </div>
+                            </div> -->
+                            <div class="card-product-widgets-bottom">
+                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
+                                    title="Add to wishlist"></a>
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                            <h3 class="card-product-title text-truncate mb-2 text-center">
+                                <a routerLink="/producto/detalles" class="nav-link"><b>COMPUBIT</b></a>
+                            </h3>
+                            <div class="d-flex align-items-center">
+                                <span class="h5 d-inline-block mb-0 mx-auto">Local 172</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Toolbar + Pagination -->
+            <div class="d-flex align-items-center pt-md-4">
+               
+                <div class="form-inline flex-nowrap d-none d-sm-flex mr-3 mr-xl-5 pt-1">
+                    <label for="pager-bottom"
+                        class="font-weight-bold text-nowrap mr-2 pr-1 d-none d-md-block">Ver</label>
+                    <select id="pager-bottom" class="custom-select">
+                        <option>12</option>
+                        <option>24</option>
+                        <option>48</option>
+                        <option>72</option>
+                        <option>96</option>
+                    </select>
+                    <span class="font-size-sm text-muted text-nowrap ml-2 d-none d-md-block">Locales por pagina</span>
+                </div>
+                <nav class="pt-1 ml-auto" aria-label="Pagination">
+                    <ul class="pagination mb-0">
+                        <li class="page-item d-sm-none">
+                            <span class="page-link page-link-static">1 / 5</span>
+                        </li>
+                        <li class="page-item active d-none d-sm-block" aria-current="page">
+                            <span class="page-link">1
+                                <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item d-none d-sm-block">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="cxi-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<app-footer></app-footer>
