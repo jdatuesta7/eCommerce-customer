@@ -15,6 +15,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 import { VendedoresComponent } from './components/vendedores/vendedores.component';
 import { ProductosVendedorComponent } from './components/productos-vendedor/productos-vendedor.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProductosVendedorComponent } from './components/productos-vendedor/prod
     DetalleProductoComponent,
     VendedoresComponent,
     ProductosVendedorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,14 +18,47 @@
             <!-- Toolbar -->
             <div class="d-flex align-items-center order-lg-3">
                 <ul class="nav nav-tools flex-nowrap">
-                    <li class="nav-item d-lg-block d-none mb-0">
-                        <a href="account-wishlist.html" class="nav-tool">
-                            <!-- <i class="cxi-heart nav-tool-icon"></i> -->
-                            <span class="nav-tool-label">Iniciar Sesion</span>
-                        </a>
-                    </li>
+
+                    <ng-container *ngIf="usuario_datos != undefined">
+                        <li class="nav-item d-lg-block d-none dropdown">
+                            <a class="nav-tool dropdown-toggle" toggle="dropdown">
+                                <i class="cxi-profile nav-tool-icon"></i>
+                                <span class="nav-tool-label">{{ usuario_datos.nombres +' '+ usuario_datos.apellidos}}</span>
+                            </a>
+
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">
+                                    <i class="cxi-profile mr-2"></i>
+                                    Perfil
+                                    <!-- <span class="badge rounded-pill bg-danger ms-2">3</span> -->
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="cxi-comment mr-2"></i>
+                                    Messages
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="cxi-external-link mr-2"></i>
+                                    Settings
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="cxi-logout mr-2"></i>
+                                    Cerrar Sesion
+                                </a>
+                            </div>
+                        </li>
+                    </ng-container>
+
+                    <ng-container *ngIf="usuario_datos == undefined">
+                        <li class="nav-item d-lg-block d-none mb-0">
+                            <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="nav-tool">
+                                <i class="cxi-profile nav-tool-icon"></i>
+                                <span class="nav-tool-label">Iniciar Sesion</span>
+                            </a>
+                        </li>
+                    </ng-container>
+
                     <li class="divider-vertical mb-0 d-lg-block d-none"></li>
-                    
+
                     <li class="nav-item align-self-center mb-0">
                         <a href="#" class="nav-tool pr-lg-0" data-toggle="offcanvas" data-target="cart">
                             <i class="cxi-cart nav-tool-icon"></i>
@@ -56,7 +89,8 @@
                 <!-- Menu -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a routerLink="/" class="nav-link">Inicio</a>
+                        <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                            class="nav-link">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a routerLink="/productos" class="nav-link dropdown-toggle" data-toggle="dropdown">Tienda</a>
@@ -157,7 +191,7 @@
     <div class="container d-flex justify-content-center">
         <div class="cs-carousel cs-controls-inverse">
             <div class="cs-carousel-inner" data-carousel-options='{"mode": "gallery", "nav": false}'>
-                
+
             </div>
         </div>
     </div>

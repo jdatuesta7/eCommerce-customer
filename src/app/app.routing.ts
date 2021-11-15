@@ -6,9 +6,11 @@ import { ProductosComponent } from "./components/productos/productos.component";
 import { DetalleProductoComponent } from "./components/detalle-producto/detalle-producto.component";
 import { VendedoresComponent } from "./components/vendedores/vendedores.component";
 import { ProductosVendedorComponent } from "./components/productos-vendedor/productos-vendedor.component";
+import { LoginComponent } from "./components/login/login.component";
 
 const appRoute: Routes = [
     {path: '', component: InicioComponent},
+    {path: 'login', component: LoginComponent},
     {path: 'contacto', component: ContactoComponent},
     {path: 'productos', component: ProductosComponent},
     {path: 'producto/detalles', component: DetalleProductoComponent},
