@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
   public usuario_datos : any = {};
 
   constructor(
-    private _clienteService: ClienteService
+    private _clienteService: ClienteService,
+    private _router: Router
   ) { 
     this.token = localStorage.getItem('token');
     this.id = localStorage.getItem('_id');
@@ -44,6 +46,12 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    window.location.reload();
+    localStorage.clear();
+    this._router.navigate(['/']);
   }
 
 }
