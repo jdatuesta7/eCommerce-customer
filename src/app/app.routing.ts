@@ -9,6 +9,8 @@ import { ProductosVendedorComponent } from "./components/productos-vendedor/prod
 import { LoginComponent } from "./components/login/login.component";
 import { PerfilComponent } from "./components/usuario/perfil/perfil.component";
 
+import { AuthGuard } from "./guards/auth.guard";
+
 const appRoute: Routes = [
     {path: '', component: InicioComponent},
     {path: 'login', component: LoginComponent},
@@ -18,7 +20,7 @@ const appRoute: Routes = [
     {path: 'vendedores', component: VendedoresComponent},
     {path: 'nombre-de-local/productos', component: ProductosVendedorComponent},
 
-    {path: 'cuenta/perfil', component: PerfilComponent},
+    {path: 'cuenta/perfil', component: PerfilComponent, canActivate: [AuthGuard]},
 ];
 
 export const appRoutingProviders : any[] = [];
