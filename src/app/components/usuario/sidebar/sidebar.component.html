@@ -1,0 +1,48 @@
+<div class="sidebar-sticky" data-sidebar-sticky-options='{
+    "topSpacing": 120,
+    "minWidth": 991}'>
+    <div class="sidebar-sticky-inner">
+        <div class="card">
+            <div class="card-body" *ngIf="usuario_datos">
+                <h5 class="card-title mb-1">{{ usuario_datos.nombres + ' ' + usuario_datos.apellidos }}</h5>
+                <p class="card-text text-muted mb-lg-0">{{ usuario_datos.email }}</p>
+                <a href="#account-menu" class="btn btn-primary btn-block d-lg-none" data-toggle="collapse">Account
+                    Menu</a>
+            </div>
+            <div id="account-menu" class="collapse d-lg-block">
+                <div class="list-group list-group-flush border-top">
+                    <a [routerLink]="['/cuenta/perfil']" routerLinkActive="active" 
+                        class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-profile font-size-lg mr-2"></i>
+                        <span>Mi perfil</span>
+                    </a>
+                    <a href="account-orders.html"
+                        class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-bag font-size-lg mr-2"></i>
+                        <span>My orders</span>
+                    </a>
+                    <a href="account-wishlist.html"
+                        class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-heart font-size-lg mr-2"></i>
+                        <span>Wishlist</span>
+                        <span class="badge badge-warning ml-auto">2</span>
+                    </a>
+                    <a href="account-recently-viewed.html"
+                        class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-eye font-size-lg mr-2"></i>
+                        <span>Recently viewed</span>
+                    </a>
+                    <a href="account-reviews.html"
+                        class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-star font-size-lg mr-2"></i>
+                        <span>My reviews</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                        <i class="cxi-logout font-size-lg mr-2"></i>
+                        <span>Sign out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,6 +16,8 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
 import { VendedoresComponent } from './components/vendedores/vendedores.component';
 import { ProductosVendedorComponent } from './components/productos-vendedor/productos-vendedor.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/usuario/perfil/perfil.component';
+import { SidebarComponent } from './components/usuario/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
     VendedoresComponent,
     ProductosVendedorComponent,
     LoginComponent,
+    PerfilComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

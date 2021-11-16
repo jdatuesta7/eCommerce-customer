@@ -41,8 +41,6 @@ export class NavbarComponent implements OnInit {
     }else{
       this.usuario_datos = undefined;
     }
-
-    console.log(this.usuario_datos);
   }
 
   ngOnInit(): void {

@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<main class="cs-page-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="bg-secondary mb-3" aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb-alt mb-0">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/']" routerLinkActive="router-link-active" ><i class="cxi-home"></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Mi Perfil</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page container -->
+    <section class="container pt-3 pt-lg-4 pb-5 pb-lg-6">
+        <div class="row pb-2 pb-lg-0">
+
+            <!-- Account menu (sticky sidebar) -->
+            <aside class="col-xl-3 col-lg-4 pb-3 mb-4 mb-lg-0">
+                <app-sidebar></app-sidebar>
+            </aside>
+
+            <!-- Content -->
+            <div class="col-lg-8 ml-auto">
+                <div class="d-flex align-items-center justify-content-between mb-4 pb-1 pb-sm-3">
+                    <h1 class="h2 mb-0">Mi Perfil</h1>
+                </div>
+                <form #actualizarForm="ngForm" (ngSubmit)="actualizar(actualizarForm)">
+                    <div class="row pb-3">
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-nombres">Nombres</label>
+                            <input [(ngModel)]="cliente.nombres" name="nombres" required placeholder="Nombres" type="text" id="usuario-nombres" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-apellidos">Apellidos</label>
+                            <input [(ngModel)]="cliente.apellidos" name="apellidos" required placeholder="Apellidos" type="text" id="usuario-apellidos" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-email">Email</label>
+                            <input value="{{ cliente.email }}" disabled required placeholder="Correo Electronico" type="email" id="usuario-email" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-password">Contraseña</label>
+                            <input [(ngModel)]="cliente.password" autocomplete="new-password" name="password" placeholder="Contraseña" type="password" id="usuario-password" class="form-control form-control-lg">
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-telefono">Telefono</label>
+                            <input [(ngModel)]="cliente.telefono" name="telefono" required placeholder="Telefono" type="text" id="usuario-telefono" class="form-control form-control-lg">
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-f_nacimiento">Fecha de nacimiento</label>
+                            <input [(ngModel)]="cliente.f_nacimiento" name="f_nacimiento" required type="date" id="usuario-f_nacimiento" class="form-control form-control-lg">
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-dni">Numero de identificacion</label>
+                            <input [(ngModel)]="cliente.dni" name="dni" required placeholder="Numero de identificacion" type="text" id="usuario-dni" class="form-control form-control-lg">
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-genero">Genero</label>
+                            <select [(ngModel)]="cliente.genero" name="genero" required id="usuario-genero" class="custom-select custom-select-lg">
+                                <option value="" selected disabled>Seleccionar...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="usuario-ciudad">Ciudad</label>
+                            <select [(ngModel)]="cliente.ciudad" name="ciudad" required id="usuario-ciudad" class="custom-select custom-select-lg">
+                                <option value="" selected disabled>Seleccionar...</option>
+                                <option *ngFor="let item of arr_municipios.sort()" value="{{item}}">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">&nbsp;Actualizar Perfil&nbsp;</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<app-footer></app-footer>

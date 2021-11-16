@@ -7,6 +7,7 @@ import { DetalleProductoComponent } from "./components/detalle-producto/detalle-
 import { VendedoresComponent } from "./components/vendedores/vendedores.component";
 import { ProductosVendedorComponent } from "./components/productos-vendedor/productos-vendedor.component";
 import { LoginComponent } from "./components/login/login.component";
+import { PerfilComponent } from "./components/usuario/perfil/perfil.component";
 
 const appRoute: Routes = [
     {path: '', component: InicioComponent},
@@ -15,7 +16,9 @@ const appRoute: Routes = [
     {path: 'productos', component: ProductosComponent},
     {path: 'producto/detalles', component: DetalleProductoComponent},
     {path: 'vendedores', component: VendedoresComponent},
-    {path: 'nombre-de-local/productos', component: ProductosVendedorComponent}
+    {path: 'nombre-de-local/productos', component: ProductosVendedorComponent},
+
+    {path: 'cuenta/perfil', component: PerfilComponent},
 ];
 
 export const appRoutingProviders : any[] = [];
