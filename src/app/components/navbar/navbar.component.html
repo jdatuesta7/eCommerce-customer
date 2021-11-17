@@ -9,12 +9,12 @@
                 <img src="assets/img/ecommerce/logoNavbar.png" alt="Createx Logo" width="130">
             </a>
             <!-- Search desktop -->
-            <div class="input-group-overlay ml-4 d-lg-block d-none order-lg-3" style="max-width: 21rem;">
+            <!-- <div class="input-group-overlay ml-4 d-lg-block d-none order-lg-3" style="max-width: 21rem;">
                 <input class="form-control appended-form-control" type="text" placeholder="Buscar productos...">
                 <div class="input-group-append-overlay">
                     <span class="input-group-text"><i class="cxi-search lead align-middle"></i></span>
                 </div>
-            </div>
+            </div> -->
             <!-- Toolbar -->
             <div class="d-flex align-items-center order-lg-3">
                 <ul class="nav nav-tools flex-nowrap">
@@ -52,8 +52,15 @@
                     <ng-container *ngIf="usuario_datos == undefined">
                         <li class="nav-item d-lg-block d-none mb-0">
                             <a [routerLink]="['/login']" routerLinkActive="router-link-active" class="nav-tool">
-                                <i class="cxi-profile nav-tool-icon"></i>
+                                <i class="fa fa-sign-in nav-tool-icon"></i>
                                 <span class="nav-tool-label">Iniciar Sesion</span>
+                            </a>
+                        </li>
+                        <li>|</li>
+                        <li class="nav-item d-lg-block d-none mb-0">
+                            <a [routerLink]="['/registrar-usuario']" routerLinkActive="router-link-active" class="nav-tool">
+                                <i class="cxi-login nav-tool-icon"></i>
+                                <span class="nav-tool-label">Registrarme</span>
                             </a>
                         </li>
                     </ng-container>

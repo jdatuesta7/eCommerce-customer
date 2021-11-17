@@ -10,10 +10,12 @@ import { LoginComponent } from "./components/login/login.component";
 import { PerfilComponent } from "./components/usuario/perfil/perfil.component";
 
 import { AuthGuard } from "./guards/auth.guard";
+import { RegistrarUsuarioComponent } from "./components/usuario/registrar/registrar-usuario.component";
 
 const appRoute: Routes = [
     {path: '', component: InicioComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
     {path: 'contacto', component: ContactoComponent},
     {path: 'productos', component: ProductosComponent},
     {path: 'productos/categoria/:categoria', component: ProductosComponent},

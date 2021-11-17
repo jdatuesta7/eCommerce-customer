@@ -45,7 +45,6 @@
                             <option>Popularidad</option>
                             <option>Precios: Bajo - Alto</option>
                             <option>Precios: Alto - Bajo</option>
-                            <option>Promedio de valoraciones</option>
                             <option>Ordenar de A - Z</option>
                             <option>Ordenar de Z - A</option>
                         </select>
@@ -288,7 +287,8 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-12">
-                                            <a href="">{{ item.categoria }}</a>
+                                            <a [routerLink]="['/productos/categoria/', item.categoria.toLowerCase()]"
+                                            routerLinkActive="router-link-active">{{ item.categoria }}</a>
                                         </div>
                                         <div class="col-12">
                                             <a href="">{{ item.admin.nombre_local }}</a>

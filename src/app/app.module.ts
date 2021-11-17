@@ -18,6 +18,7 @@ import { ProductosVendedorComponent } from './components/productos-vendedor/prod
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/usuario/perfil/perfil.component';
 import { SidebarComponent } from './components/usuario/sidebar/sidebar.component';
+import { RegistrarUsuarioComponent } from './components/usuario/registrar/registrar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SidebarComponent } from './components/usuario/sidebar/sidebar.component
     LoginComponent,
     PerfilComponent,
     SidebarComponent,
+    RegistrarUsuarioComponent,
   ],
   imports: [
     BrowserModule,

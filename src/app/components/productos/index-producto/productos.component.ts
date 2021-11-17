@@ -73,6 +73,7 @@ export class ProductosComponent implements OnInit {
   }
 
   obtenerProductos(filtro:any){
+    this.load_data = true;
     this._clienteService.listar_productos_publicos(filtro).subscribe(
       response => {
         this.productos = response.data;
@@ -164,11 +165,12 @@ export class ProductosComponent implements OnInit {
 
   buscar_por_categoria(){
     console.log(this.filtro_cat_productos);
-    this.load_data = true;
+    
     if(this.filtro_cat_productos == 'todos'){
       this.obtenerProductos('');
     }else{
       
+      this.load_data = true;
       this._clienteService.listar_productos_publicos('').subscribe(
         response => {
 
@@ -178,15 +180,14 @@ export class ProductosComponent implements OnInit {
             this.productos[index].precio = new Intl.NumberFormat().format(element.precio);
           });
 
-          this.productos = this.productos.filter(
-            (item:any)=> item.categoria == this.filtro_cat_productos);
-  
+          this.productos = this.productos.filter((item:any)=> item.categoria == this.filtro_cat_productos);
+            
+          this.load_data = false;
         },
         error => {
           console.log(error);
         }
       )
-      
       
     }
   }
