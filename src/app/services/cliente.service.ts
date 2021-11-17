@@ -72,4 +72,14 @@ export class ClienteService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this._http.get(this.url+'listar_productos_publicos/'+filtro, {headers: headers});
   }
+
+  listar_productos_nuevos_publicos():Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.get(this.url+'listar_productos_nuevos_publicos', {headers: headers});
+  }
+
+  listar_productos_tendencia_publicos():Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.get(this.url+'listar_productos_tendencia_publicos', {headers: headers});
+  }
 }

@@ -1,11 +1,50 @@
 <app-navbar></app-navbar>
 
+<!-- New arrivals -->
+<section class="container-fluid px-xl-grid-gutter mt-5 mb-3 mb-sm-4 mt-md-0 mb-lg-5 py-5 py-lg-6">
+    <div class="text-center mb-5 pb-2">
+      <h2 class="h1">Nuevos Productos</h2>
+      <p class="font-size-lg text-muted mb-1">Echa un vistazo a nuestros productos mas recientes de esta temporada. </p>
+      <a [routerLink]="['/productos']" routerLinkActive="router-link-active"  class="font-size-lg">Ver la coleccion aqui</a>
+    </div>
+
+    <!-- Product carousel -->
+    <div class="cs-carousel cs-nav-outside">
+      <div class="cs-carousel-inner cs-carousel-inner-three" data-carousel-options='{
+        
+      }'>
+
+        <!-- Item -->
+        <div *ngFor="let item of nuevos_productos">
+          <div class="card card-product">
+            <div class="card-product-img">
+              <a href="shop-single.html" class="card-img-top">
+                <img [src]="url+'obtener_portada/'+item.portada" alt="{{ item.titulo }}">
+              </a>
+              <div class="card-product-widgets-bottom">
+                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left" title="Add to wishlist"></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-product-title text-truncate mb-2">
+                <a href="shop-single.html" class="nav-link">{{ item.titulo }}</a>
+              </h3>
+              <div class="d-flex align-items-center">
+                <span class="h5 d-inline-block mb-0">${{ item.precio }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</section>
 
 <!-- Trending products (carousel) -->
 <section class="py-5" style="background-color: #e5e8ed;">
     <div class="container my-lg-2 py-2 py-md-4">
         <div class="d-flex align-items-center justify-content-between pb-sm-1 mb-5">
-            <h2 class="h1 mb-0">Tendencia Ahora</h2>
+            <h2 class="h1 mb-0">Mas vendidos</h2>
             <div class="tns-custom-controls cs-controls-inverse" id="custom-controls-trending" tabindex="0">
                 <button type="button" data-controls="prev" tabindex="-1">
                     <i class="cxi-arrow-left"></i>
@@ -16,99 +55,13 @@
             </div>
         </div>
         <div class="cs-carousel pb-2">
-            <div class="row" data-carousel-options='{
-          "nav": false,
-          "controlsContainer": "#custom-controls-trending",
-          "responsive": {
-            "0": {
-              "items": 1,
-              "gutter": 20
-            },
-            "480": {
-              "items": 2,
-              "gutter": 24
-            },
-            "700": {
-              "items": 3,
-              "gutter": 24
-            },
-            "1100": {
-              "items": 4,
-              "gutter": 30
-            }
-          }
-        }'>
-
+            <div class="cs-carousel-inner cs-carousel-inner-four" data-carousel-options='{}'>
                 <!-- Item -->
-                <div class="col-md-4">
+                <div *ngFor="let item of productos_tendencia">
                     <div class="card card-product mx-auto">
                         <div class="card-product-img">
                             <a href="shop-single.html" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/08.jpg" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body bg-0 pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a href="shop-single.html" class="nav-link">Portatil Gamer AsusRog</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$3.850.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="col-md-4">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a href="shop-single.html" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/07.jpg" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star"></i>
-                                </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body bg-0 pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a href="shop-single.html" class="nav-link">Play Station 4 Pro</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.850.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="col-md-4">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a href="shop-single.html" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/05.jpg" alt="Product image">
+                                <img [src]="url+'obtener_portada/'+item.portada" alt="{{ item.titulo }}" alt="Product image">
                             </a>
                             <div class="card-product-widgets-bottom">
                                 <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
@@ -117,69 +70,15 @@
                         </div>
                         <div class="card-body bg-0 pb-2">
                             <h3 class="card-product-title text-truncate mb-2">
-                                <a href="shop-single.html" class="nav-link">Camara webcam Trust</a>
+                                <a href="shop-single.html" class="nav-link">{{ item.titulo }}</a>
                             </h3>
                             <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$100.000</span>
+                                <span class="h5 d-inline-block mb-0">${{ item.precio }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item -->
-                <div class="col-md-4">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a href="shop-single.html" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/03.png" alt="Product image">
-                            </a>
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body bg-0 pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a href="shop-single.html" class="nav-link">Computadora Intel Core i5 9100</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.650.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="col-md-4">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a href="shop-single.html" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/06.jpg" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star"></i>
-                                    <i class="sr-star cxi-star"></i>
-                                </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body bg-0 pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a href="shop-single.html" class="nav-link">Xbox One S</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.950.000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
