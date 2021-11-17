@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ProductosComponent } from './components/productos/productos.component';
+import { ProductosComponent } from './components/productos/index-producto/productos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 import { VendedoresComponent } from './components/vendedores/vendedores.component';

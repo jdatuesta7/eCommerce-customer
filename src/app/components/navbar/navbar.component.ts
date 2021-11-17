@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   public id;
   public usuario : any = undefined;
   public usuario_datos : any = {};
+  public categorias_global : any = {};
 
   constructor(
     private _clienteService: ClienteService,
@@ -43,6 +44,16 @@ export class NavbarComponent implements OnInit {
     }else{
       this.usuario_datos = undefined;
     }
+
+    this._clienteService.obtener_categorias_publico().subscribe(
+      response => {
+        console.log(response);
+        this.categorias_global = response.data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {
