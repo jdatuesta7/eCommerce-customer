@@ -16,12 +16,15 @@ export class ProductosComponent implements OnInit {
 
   public categorias_global: any = {};
   public filtro_categorias = '';
-  public productos : Array<any> = [];
+  public productos: Array<any> = [];
   public filtro_producto = '';
   public load_data = true;
   public url;
   public filtro_cat_productos = 'todos';
-  public route_categoria : any;
+  public route_categoria: any;
+  public page = 1;
+  public pageSize = 6;
+  public sort_by = 'Defecto';
 
   constructor(
     private _clienteService: ClienteService,
@@ -35,7 +38,7 @@ export class ProductosComponent implements OnInit {
         this.route_categoria = params['categoria'];
         console.log(this.route_categoria);
 
-        if(this.route_categoria){
+        if (this.route_categoria) {
           this.load_data = true;
           this._clienteService.listar_productos_publicos(this.filtro_producto).subscribe(
             response => {
@@ -44,8 +47,8 @@ export class ProductosComponent implements OnInit {
               this.productos.forEach((element, index) => {
                 this.productos[index].precio = new Intl.NumberFormat().format(element.precio);
               });
-    
-              this.productos = this.productos.filter((item:any)=> item.categoria.toLowerCase() == this.route_categoria);
+
+              this.productos = this.productos.filter((item: any) => item.categoria.toLowerCase() == this.route_categoria);
 
               this.load_data = false;
             },
@@ -53,7 +56,7 @@ export class ProductosComponent implements OnInit {
               console.log(error);
             }
           )
-        }else{
+        } else {
           this.obtenerProductos('');
         }
       }
@@ -61,7 +64,7 @@ export class ProductosComponent implements OnInit {
 
   }
 
-  obtenerCategorias(){
+  obtenerCategorias() {
     this._clienteService.obtener_categorias_publico().subscribe(
       response => {
         this.categorias_global = response.data;
@@ -72,7 +75,7 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  obtenerProductos(filtro:any){
+  obtenerProductos(filtro: any) {
     this.load_data = true;
     this._clienteService.listar_productos_publicos(filtro).subscribe(
       response => {
@@ -124,16 +127,16 @@ export class ProductosComponent implements OnInit {
         (item: any) => search.test(item.titulo)
       );
 
-    }else{
+    } else {
       this.obtenerCategorias();
     }
   }
 
-  buscar_productos(){
+  buscar_productos() {
     this.obtenerProductos(this.filtro_producto);
   }
 
-  buscar_precios(){
+  buscar_precios() {
 
     this.load_data = true;
     this._clienteService.listar_productos_publicos('').subscribe(
@@ -146,7 +149,7 @@ export class ProductosComponent implements OnInit {
         // console.log(minimo, maximo);
 
         this.productos = this.productos.filter(
-          (item:any) => {
+          (item: any) => {
             return item.precio >= min && item.precio <= max;
           }
         );
@@ -163,13 +166,13 @@ export class ProductosComponent implements OnInit {
     )
   }
 
-  buscar_por_categoria(){
+  buscar_por_categoria() {
     console.log(this.filtro_cat_productos);
-    
-    if(this.filtro_cat_productos == 'todos'){
+
+    if (this.filtro_cat_productos == 'todos') {
       this.obtenerProductos('');
-    }else{
-      
+    } else {
+
       this.load_data = true;
       this._clienteService.listar_productos_publicos('').subscribe(
         response => {
@@ -180,19 +183,109 @@ export class ProductosComponent implements OnInit {
             this.productos[index].precio = new Intl.NumberFormat().format(element.precio);
           });
 
-          this.productos = this.productos.filter((item:any)=> item.categoria == this.filtro_cat_productos);
-            
+          this.productos = this.productos.filter((item: any) => item.categoria == this.filtro_cat_productos);
+
           this.load_data = false;
         },
         error => {
           console.log(error);
         }
       )
-      
+
     }
   }
 
-  reset_productos(){
+  reset_productos() {
     this.obtenerProductos('');
+  }
+
+  ordenar_por() {
+    console.log(this.sort_by);
+    if (this.sort_by == 'Defecto') {
+      this.obtenerProductos('');
+
+    } else if (this.sort_by == 'Popularidad') {
+      this.productos.sort((a, b) => {
+
+        if (a.nventas < b.nventas) {
+          return 1;
+        }
+        if (a.nventas > b.nventas) {
+          return -1;
+        }
+        // a debe ser igual que b
+        return 0;
+      });
+
+    } else if (this.sort_by == '+-Precio') {
+      this.productos.forEach((element, index) => {
+        this.productos[index].precio = parseFloat(element.precio.replace(/[.]/g, ""));
+      });
+
+      console.log(this.productos);
+
+      this.productos.sort((a, b) => {
+
+        if (a.precio < b.precio) {
+          return 1;
+        }
+        if (a.precio > b.precio) {
+          return -1;
+        }
+        // a debe ser igual que b
+        return 0;
+      });
+
+      this.productos.forEach((element, index) => {
+        this.productos[index].precio = new Intl.NumberFormat().format(element.precio);
+      });
+
+    } else if (this.sort_by == '-+Precio') {
+      this.productos.forEach((element, index) => {
+        this.productos[index].precio = parseFloat(element.precio.replace(/[.]/g, ""));
+      });
+
+      console.log(this.productos);
+
+      this.productos.sort((a, b) => {
+
+        if (a.precio > b.precio) {
+          return 1;
+        }
+        if (a.precio < b.precio) {
+          return -1;
+        }
+        // a debe ser igual que b
+        return 0;
+      });
+
+      this.productos.forEach((element, index) => {
+        this.productos[index].precio = new Intl.NumberFormat().format(element.precio);
+      });
+    } else if (this.sort_by == 'azTitulo') {
+      this.productos.sort((a, b) => {
+
+        if (a.titulo > b.titulo) {
+          return 1;
+        }
+        if (a.titulo < b.titulo) {
+          return -1;
+        }
+        // a debe ser igual que b
+        return 0;
+      });
+    }else if(this.sort_by == 'zaTitulo'){
+      this.productos.sort((a, b) => {
+
+        if(a.titulo < b.titulo) {
+          return 1;
+        }
+        if (a.titulo > b.titulo) {
+          return -1;
+        }
+        // a debe ser igual que b
+        return 0;
+    });
+    }
   }
 }
