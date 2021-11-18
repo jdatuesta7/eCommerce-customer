@@ -47,7 +47,6 @@ export class NavbarComponent implements OnInit {
 
     this._clienteService.obtener_categorias_publico().subscribe(
       response => {
-        console.log(response);
         this.categorias_global = response.data;
       },
       error => {

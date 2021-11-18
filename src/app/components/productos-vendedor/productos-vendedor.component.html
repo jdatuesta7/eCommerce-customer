@@ -16,15 +16,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="display-4">Local comercial: Compubit</h1>
-                <p class="lead"><b>Local: 172</b></p>
-                <p class="lead">Descripcion: Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere saepe cupiditate repellendus suscipit fuga similique commodi modi porro deleniti. Animi iure, aut rem officia quo reprehenderit deserunt possimus debitis praesentium?</p>
+                <h1 class="display-4">{{ vendedor.nombre_local }}</h1>
+                <p class="lead"><b>Numero Local: {{ vendedor.id_local }}</b></p>
+                <p class="lead">Descripcion: {{ vendedor.descripcion }}</p>
             </div>
             <div class="col-md-4">
                 <div class="card card-product mx-auto " style="width: 250px; height: 250px;">
                     <div class="card-product-img">
                         <a class="card-img-top">
-                            <img src="assets/img/ecommerce/sellers/03.jpg"
+                            <img [src]="url+'obtener_logo/'+vendedor.logo"
                                 alt="Product image">
                         </a>
                         <div class="card-product-widgets-bottom">
@@ -123,120 +123,47 @@
         <div class="col">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3" data-filters-columns>
 
+                <!-- No Items -->
+                <ng-container *ngIf="productos_vendedor.length == 0">
+                    <div class="col-lg-12 col-md-5">
+                        <h3 class="h6 mb-2 text-uppercase">No se encontraron productos</h3>
+                        <h2 class="h1 pb-lg-3">Es posible que sea un error</h2>
+
+                        <a style="cursor: pointer;" role="button" (click)="reset_productos()"
+                            class="btn btn-gradient btn-hover-shadow">Mostrar todos los productos</a>
+                    </div>
+                </ng-container>
+
                 <!-- Item -->
-                <div class="col pb-sm-2 mb-grid-gutter">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a routerLink="/producto/detalles" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/01.png" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
+                <ng-container *ngIf="productos_vendedor.length >= 1">
+                    <div class="col pb-sm-2 mb-grid-gutter" *ngFor="let item of productos_vendedor">
+                        <div class="card card-product mx-auto">
+                            <div class="card-product-img">
+                                <a routerLink="/producto/detalles" class="card-img-top">
+                                    <img [src]="url+'obtener_portada/'+item.portada" alt="Product image">
+                                </a>
+                                <div class="card-product-widgets-bottom">
+                                    <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
+                                        title="Add to wishlist"></a>
                                 </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
                             </div>
-                        </div>
-                        <div class="card-body pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a routerLink="/producto/detalles" class="nav-link">PC Gamer Ryzen</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.350.000</span>
+                            <div class="card-body pb-2">
+                                <h3 class="card-product-title text-truncate mb-2">
+                                    <a routerLink="/producto/detalles" class="nav-link">{{ item.titulo }}</a>
+                                </h3>
+                                <div class="d-flex align-items-center">
+                                    <span class="h5 d-inline-block mb-0">${{ item.precio }}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary btn-block">
-                                <i class="cxi-cart align-middle mt-n1 mr-2"></i>
-                                Añadir al carrito
-                            </button>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary btn-block">
+                                    <i class="cxi-cart align-middle mt-n1 mr-2"></i>
+                                    Añadir al carrito
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                 <!-- Item -->
-                 <div class="col pb-sm-2 mb-grid-gutter">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a routerLink="/producto/detalles" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/02.png" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a routerLink="/producto/detalles" class="nav-link">PC Gamer Ryzen</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.350.000</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary btn-block">
-                                <i class="cxi-cart align-middle mt-n1 mr-2"></i>
-                                Añadir al carrito
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- Item -->
-                 <div class="col pb-sm-2 mb-grid-gutter">
-                    <div class="card card-product mx-auto">
-                        <div class="card-product-img">
-                            <a routerLink="/producto/detalles" class="card-img-top">
-                                <img src="assets/img/ecommerce/shop/03.png" alt="Product image">
-                            </a>
-                            <!-- <div class="card-product-widgets-top">
-                                <div class="star-rating ml-auto">
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                    <i class="sr-star cxi-star-filled active"></i>
-                                </div>
-                            </div> -->
-                            <div class="card-product-widgets-bottom">
-                                <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip" data-placement="left"
-                                    title="Add to wishlist"></a>
-                            </div>
-                        </div>
-                        <div class="card-body pb-2">
-                            <h3 class="card-product-title text-truncate mb-2">
-                                <a routerLink="/producto/detalles" class="nav-link">PC Gamer Ryzen</a>
-                            </h3>
-                            <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">$1.350.000</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary btn-block">
-                                <i class="cxi-cart align-middle mt-n1 mr-2"></i>
-                                Añadir al carrito
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                </ng-container>
 
             </div>
 

@@ -13,15 +13,16 @@ import { AuthGuard } from "./guards/auth.guard";
 import { RegistrarUsuarioComponent } from "./components/usuario/registrar/registrar-usuario.component";
 
 const appRoute: Routes = [
-    {path: '', component: InicioComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registrar-usuario', component: RegistrarUsuarioComponent},
-    {path: 'contacto', component: ContactoComponent},
+
+    {path: '', component: InicioComponent},
     {path: 'productos', component: ProductosComponent},
     {path: 'productos/categoria/:categoria', component: ProductosComponent},
+    {path: 'locales-comerciales', component: VendedoresComponent},
+    {path: 'local-comercial/productos/:local', component: ProductosVendedorComponent},
     {path: 'producto/detalles', component: DetalleProductoComponent},
-    {path: 'vendedores', component: VendedoresComponent},
-    {path: 'nombre-de-local/productos', component: ProductosVendedorComponent},
+    {path: 'contacto', component: ContactoComponent},
 
     {path: 'cuenta/perfil', component: PerfilComponent, canActivate: [AuthGuard]},
 ];

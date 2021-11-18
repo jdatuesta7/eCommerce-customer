@@ -82,7 +82,7 @@
                 <div class="col pb-sm-2 mb-grid-gutter" *ngFor="let item of vendedores">
                     <div class="card card-product mx-auto">
                         <div class="card-product-img">
-                            <a routerLink="/producto/detalles" class="card-img-top">
+                            <a [routerLink]="['/local-comercial/productos/', item._id]" class="card-img-top">
                                 <img [src]="url+'obtener_logo/'+item.logo"
                                     alt="Product image">
                             </a>
