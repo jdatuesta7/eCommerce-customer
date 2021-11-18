@@ -82,4 +82,9 @@ export class ClienteService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this._http.get(this.url+'listar_productos_tendencia_publicos', {headers: headers});
   }
+
+  listar_vendedores_filtro_publico(filtro:any):Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.get(this.url+'listar_vendedores_filtro_publico/'+filtro, {headers: headers});
+  }
 }
