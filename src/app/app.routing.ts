@@ -11,6 +11,7 @@ import { PerfilComponent } from "./components/usuario/perfil/perfil.component";
 
 import { AuthGuard } from "./guards/auth.guard";
 import { RegistrarUsuarioComponent } from "./components/usuario/registrar/registrar-usuario.component";
+import { ShowProductoComponent } from "./components/productos/show-producto/show-producto.component";
 
 const appRoute: Routes = [
     {path: 'login', component: LoginComponent},
@@ -19,9 +20,11 @@ const appRoute: Routes = [
     {path: '', component: InicioComponent},
     {path: 'productos', component: ProductosComponent},
     {path: 'productos/categoria/:categoria', component: ProductosComponent},
+    {path: 'productos/:slug', component: ShowProductoComponent},
+
     {path: 'locales-comerciales', component: VendedoresComponent},
     {path: 'local-comercial/productos/:local', component: ProductosVendedorComponent},
-    {path: 'producto/detalles', component: DetalleProductoComponent},
+    
     {path: 'contacto', component: ContactoComponent},
 
     {path: 'cuenta/perfil', component: PerfilComponent, canActivate: [AuthGuard]},

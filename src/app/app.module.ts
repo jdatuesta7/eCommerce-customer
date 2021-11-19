@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/usuario/perfil/perfil.component';
 import { SidebarComponent } from './components/usuario/sidebar/sidebar.component';
 import { RegistrarUsuarioComponent } from './components/usuario/registrar/registrar-usuario.component';
+import { ShowProductoComponent } from './components/productos/show-producto/show-producto.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegistrarUsuarioComponent } from './components/usuario/registrar/regist
     PerfilComponent,
     SidebarComponent,
     RegistrarUsuarioComponent,
+    ShowProductoComponent,
   ],
   imports: [
     BrowserModule,

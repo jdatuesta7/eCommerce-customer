@@ -1,0 +1,201 @@
+<app-navbar></app-navbar>
+
+<main class="cs-page-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="bg-secondary mb-3" aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb-alt mb-0">
+                <li class="breadcrumb-item">
+                    <a routerLink="/"><i class="cxi-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a routerLink="/productos">Productos</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a>Detalles</a>
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <ng-container *ngIf="producto != undefined">
+
+        <!-- Page title -->
+        <section class="container d-md-flex align-items-center justify-content-between py-1 py-md-2">
+            <h1 >{{ producto.titulo }}</h1>
+            <span class="text-muted"><strong>Art. ID.</strong> {{ producto._id }}</span>
+        </section>
+
+        <!-- Single product -->
+        <section class="container py-md-2 py-3 mb-2">
+            <div class="row">
+            <div class="col-md-6 mb-md-0 mb-4">
+
+                <!-- Product gallery -->
+                <div class="cs-carousel cs-gallery cs-product-gallery mx-auto" style="max-width: 570px;">
+                    <div class="cs-carousel-one" data-carousel-options=''>
+
+                        <!-- Product gallery item -->
+                        <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                            <img class="rounded" [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                            <span class="cs-gallery-caption">{{ producto.titulo }}</span>
+                        </a>
+
+                        <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                            <img class="rounded" [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                            <span class="cs-gallery-caption">{{ producto.titulo }}</span>
+                        </a>
+
+                        <!-- Product gallery item -->
+                        <!-- <a class="cs-gallery-item" href="https://createx.createx.studio/assets/img/ecommerce/shop/single/01.jpg" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                            <img class="rounded" src="https://createx.createx.studio/assets/img/ecommerce/shop/single/01.jpg" alt="Carousel image">
+                            <span class="cs-gallery-caption">Gallery image caption #2</span>
+                        </a> -->
+
+                    </div>
+
+                    
+                    <!-- Product gallery thumbnails -->
+                    <div class="cs-thumbnails" id="cs-thumbnails">
+                        <!-- <button type="button" data-nav="0" *ngFor="let item of producto.galeria">
+                            <img [src]="url+'obtener_portada/'+item.imagen" alt="Thumbnail">
+                        </button> -->
+                        <button type="button" data-nav="0">
+                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
+                        </button>
+                        <button type="button" data-nav="0">
+                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
+                        </button>
+                        <button type="button" data-nav="0">
+                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
+                        </button>
+                        <!-- <button type="button" data-nav="1">
+                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/02.jpg" alt="Thumbnail">
+                        </button>
+                        <button type="button" data-nav="2">
+                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/03.jpg" alt="Thumbnail">
+                        </button>
+                        <button type="button" data-nav="3">
+                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/04.jpg" alt="Thumbnail">
+                        </button>
+                        <button type="button" data-nav="4" class="video-indicator">
+                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/05.jpg" alt="Thumbnail">
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 pl-xl-5 mt-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                <!-- Price -->
+                <div class="d-flex align-items-center mb-sm-0 mb-4">
+                    <span class="h3 d-inline-block mb-0 text-danger">${{ producto.precio }}</span>
+                    <!-- <del class="d-inline-block ml-2 pl-1 font-size-lg text-muted">$1.500.000</del>
+                    <span class="ml-4 p-2 badge badge-danger font-size-base font-weight-bold">- 15%</span> -->
+                </div>
+
+                <!-- Rating -->
+                <!-- <div class="text-sm-right">
+                    <div class="star-rating ml-auto">
+                    <i class="sr-star cxi-star-filled active"></i>
+                    <i class="sr-star cxi-star-filled active"></i>
+                    <i class="sr-star cxi-star-filled active"></i>
+                    <i class="sr-star cxi-star-filled active"></i>
+                    <i class="sr-star cxi-star"></i>
+                    </div>
+                    <span class="font-size-sm text-muted">12 reviews</span>
+                </div> -->
+                </div>
+
+                <!-- Ordering form -->
+                <form class="row">
+                
+                <div class="col-lg-2 col-4 order-lg-3 order-3">
+                    <div class="form-group">
+                    <select class="form-control custom-select" id="select-input">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>5</option>
+                        <option>10</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-4 order-4">
+                    <button class="btn btn-block btn-primary">
+                    <i class="cxi-cart mr-2"></i>
+                    Añadir al carrito
+                    </button>
+                </div>
+                <div class="col-lg-4 col-8 order-lg-5 order-2">
+                    <button class="btn btn-block btn-outline-primary px-lg-4">
+                    <i class="cxi-heart mr-2"></i>
+                    Favorito
+                    </button>
+                </div>
+                <div class="col-lg-12" *ngIf="producto.admin">
+                    <h4 >Local {{ producto.admin.id_local }} - {{ producto.admin.nombre_local}}</h4>
+                </div>
+
+                </form>
+
+                <!-- Details -->
+                <!-- Accordion made of cards -->
+                <div class="accordion-alt mb-4" id="productTerms">
+
+                <!-- Card Details -->
+                <div class="card border-bottom">
+                    <div class="card-header" id="details-card">
+                    <h6 class="accordion-heading">
+                        <a href="#details" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="details">Detalles
+                        <span class="accordion-indicator"></span>
+                        </a>
+                    </h6>
+                    </div>
+                    <div class="collapse show" id="details" aria-labelledby="details-card" data-parent="#productTerms">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-8 mb-md-0 mb-4">
+                            <p>{{ producto.descripcion }}</p>
+                            <p class="mt-2">{{ producto.contenido }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                </div>
+
+                <!-- Payment -->
+                <!-- <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
+                <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
+                    <img src="../../assets/img/ecommerce/shop/single/cards/visa.jpg" alt="Visa" class="border rounded">
+                </a>
+                <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
+                    <img src="../../assets/img/ecommerce/shop/single/cards/master-card.jpg" alt="Mastercard" class="border rounded">
+                </a>
+                <a href="#" class="d-inline-block mb-3">
+                    <img src="../../assets/img/ecommerce/shop/single/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
+                </a>
+                </div> -->
+            </div>
+            </div>
+        </section>
+
+        
+
+    </ng-container>
+
+    <ng-container *ngIf="producto == undefined">
+        <div class="col-lg-12 col-md-5">
+            <h3 class="h6 mb-2 text-uppercase">No se encontraron productos</h3>
+            <h2 class="h1 pb-lg-3">Es posible que sea un error</h2>
+
+            <a [routerLink]="['/productos']" class="btn btn-gradient btn-hover-shadow mb-4">Mostrar todos los productos</a>
+        </div>
+    </ng-container>
+
+</main>
+
+<app-footer></app-footer>
