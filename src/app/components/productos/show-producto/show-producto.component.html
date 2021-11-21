@@ -23,60 +23,64 @@
 
         <!-- Page title -->
         <section class="container d-md-flex align-items-center justify-content-between py-1 py-md-2">
-            <h1 >{{ producto.titulo }}</h1>
+            <h1>{{ producto.titulo }}</h1>
             <span class="text-muted"><strong>Art. ID.</strong> {{ producto._id }}</span>
         </section>
 
         <!-- Single product -->
         <section class="container py-md-2 py-3 mb-5">
             <div class="row">
-            <div class="col-md-6 mb-md-0 mb-4">
+                <div class="col-md-6 mb-md-0 mb-4">
 
-                <!-- Product gallery -->
-                <div class="cs-carousel cs-gallery cs-product-gallery mx-auto" style="max-width: 570px;">
-                    <div class="cs-carousel-one" data-carousel-options=''>
+                    <!-- Product gallery -->
+                    <div class="cs-carousel cs-gallery cs-product-gallery mx-auto" style="max-width: 570px;">
+                        <div class="cs-carousel-inner" data-carousel-options=''>
 
-                        <!-- Product gallery item -->
-                        <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
-                            <img class="rounded" [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                            <span class="cs-gallery-caption">{{ producto.titulo }}</span>
-                        </a>
+                            <!-- Product gallery item -->
+                            <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}"
+                                data-sub-html='<h6 class="text-light">Imagen #1</h6>'>
+                                <img class="rounded" [src]="url+'obtener_portada/'+producto.portada"
+                                    alt="Product image">
+                                <span class="cs-gallery-caption">{{ producto.titulo }}</span>
+                            </a>
 
-                        <!-- <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
-                            <img class="rounded" [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                            <span class="cs-gallery-caption">{{ producto.titulo }}</span>
-                        </a> -->
+                            <ng-container *ngFor="let item of producto.galeria; let indice = index">
+                                <a class="cs-gallery-item"  href="{{ url+'obtener_portada/'+item.imagen }}"
+                                    data-sub-html='<h6 class="text-light">Imagen #...</h6>'> 
+                                    <h6 class="text-light">Gallery image caption #2</h6>
+                                    <img class="rounded" [src]="url+'obtener_portada/'+item.imagen"
+                                        alt="Product image">
+                                    <span class="cs-gallery-caption">{{ producto.titulo }}</span>
+                                </a>
+                            </ng-container>
 
+                        </div>
+
+
+                        <!-- Product gallery thumbnails -->
+                        <div class="cs-thumbnails" id="cs-thumbnails">
+                            <button type="button" data-nav="0">
+                                <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
+                            </button>
+                            <button type="button" data-nav="0" *ngFor="let item of producto.galeria">
+                                <img [src]="url+'obtener_portada/'+item.imagen" alt="Thumbnail">
+                            </button>
+                        </div>
                     </div>
-
-                    
-                    <!-- Product gallery thumbnails -->
-                    <!-- <div class="cs-thumbnails" id="cs-thumbnails">
-                        <button type="button" data-nav="0">
-                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
-                        </button>
-                        <button type="button" data-nav="0">
-                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
-                        </button>
-                        <button type="button" data-nav="0">
-                            <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
-                        </button>
-                    </div> -->
                 </div>
-            </div>
-            
-            <div class="col-md-6 pl-xl-5 mt-4">
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                <!-- Price -->
-                <div class="d-flex align-items-center mb-sm-0 mb-4">
-                    <span class="h3 d-inline-block mb-0 text-danger">${{ producto.precio }}</span>
-                    <!-- <del class="d-inline-block ml-2 pl-1 font-size-lg text-muted">$1.500.000</del>
+                <div class="col-md-6 pl-xl-5 mt-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                        <!-- Price -->
+                        <div class="d-flex align-items-center mb-sm-0 mb-4">
+                            <span class="h3 d-inline-block mb-0 text-danger">${{ producto.precio }}</span>
+                            <!-- <del class="d-inline-block ml-2 pl-1 font-size-lg text-muted">$1.500.000</del>
                     <span class="ml-4 p-2 badge badge-danger font-size-base font-weight-bold">- 15%</span> -->
-                </div>
+                        </div>
 
-                <!-- Rating -->
-                <!-- <div class="text-sm-right">
+                        <!-- Rating -->
+                        <!-- <div class="text-sm-right">
                     <div class="star-rating ml-auto">
                     <i class="sr-star cxi-star-filled active"></i>
                     <i class="sr-star cxi-star-filled active"></i>
@@ -86,68 +90,73 @@
                     </div>
                     <span class="font-size-sm text-muted">12 reviews</span>
                 </div> -->
-                </div>
-
-                <!-- Ordering form -->
-                <form class="row">
-                
-                <div class="col-lg-2 col-4 order-lg-3 order-3">
-                    <div class="form-group">
-                    <select class="form-control custom-select" id="select-input">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>5</option>
-                        <option>10</option>
-                    </select>
                     </div>
-                </div>
-                <div class="col-lg-5 order-lg-4 order-4">
-                    <button class="btn btn-block btn-primary">
-                    <i class="cxi-cart mr-2"></i>
-                    Añadir al carrito
-                    </button>
-                </div>
-                <div class="col-lg-4 col-8 order-lg-5 order-2">
-                    <button class="btn btn-block btn-outline-primary px-lg-4">
-                    <i class="cxi-heart mr-2"></i>
-                    Favorito
-                    </button>
-                </div>
-                <div class="col-lg-12" *ngIf="producto.admin">
-                    <a [routerLink]="['/local-comercial/productos/', producto.admin._id]" routerLinkActive="router-link-active" ><h4 >Local {{ producto.admin.id_local }} - {{ producto.admin.nombre_local}}</h4></a>
-                </div>
 
-                </form>
+                    <!-- Ordering form -->
+                    <form class="row">
 
-                <!-- Details -->
-                <!-- Accordion made of cards -->
-                <div class="accordion-alt mb-4" id="productTerms">
-
-                <!-- Card Details -->
-                <div class="card border-bottom">
-                    <div class="card-header" id="details-card">
-                    <h6 class="accordion-heading">
-                        <a href="#details" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="details">Detalles
-                        <span class="accordion-indicator"></span>
-                        </a>
-                    </h6>
-                    </div>
-                    <div class="collapse show" id="details" aria-labelledby="details-card" data-parent="#productTerms">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-8 mb-md-0 mb-4">
-                            <p>{{ producto.descripcion }}</p>
-                            <p class="mt-2">{{ producto.contenido }}</p>
+                        <div class="col-lg-2 col-4 order-lg-3 order-3">
+                            <div class="form-group">
+                                <select class="form-control custom-select" id="select-input">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>5</option>
+                                    <option>10</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                
-                </div>
+                        <div class="col-lg-5 order-lg-4 order-4">
+                            <button class="btn btn-block btn-primary">
+                                <i class="cxi-cart mr-2"></i>
+                                Añadir al carrito
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-8 order-lg-5 order-2">
+                            <button class="btn btn-block btn-outline-primary px-lg-4">
+                                <i class="cxi-heart mr-2"></i>
+                                Favorito
+                            </button>
+                        </div>
+                        <div class="col-lg-12" *ngIf="producto.admin">
+                            <a [routerLink]="['/local-comercial/productos/', producto.admin._id]"
+                                routerLinkActive="router-link-active">
+                                <h4>Local {{ producto.admin.id_local }} - {{ producto.admin.nombre_local}}</h4>
+                            </a>
+                        </div>
 
-                <!-- Payment -->
-                <!-- <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
+                    </form>
+
+                    <!-- Details -->
+                    <!-- Accordion made of cards -->
+                    <div class="accordion-alt mb-4" id="productTerms">
+
+                        <!-- Card Details -->
+                        <div class="card border-bottom">
+                            <div class="card-header" id="details-card">
+                                <h6 class="accordion-heading">
+                                    <a href="#details" class="collapsed" role="button" data-toggle="collapse"
+                                        aria-expanded="false" aria-controls="details">Detalles
+                                        <span class="accordion-indicator"></span>
+                                    </a>
+                                </h6>
+                            </div>
+                            <div class="collapse show" id="details" aria-labelledby="details-card"
+                                data-parent="#productTerms">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-8 mb-md-0 mb-4">
+                                            <p>{{ producto.descripcion }}</p>
+                                            <p class="mt-2">{{ producto.contenido }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Payment -->
+                    <!-- <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
                 <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
                     <img src="../../assets/img/ecommerce/shop/single/cards/visa.jpg" alt="Visa" class="border rounded">
                 </a>
@@ -158,11 +167,286 @@
                     <img src="../../assets/img/ecommerce/shop/single/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
                 </a>
                 </div> -->
-            </div>
+                </div>
             </div>
         </section>
 
-        
+        <section class="py-5" style="background-color: #e5e8ed;">
+            <div class="container my-lg-2 py-2 py-md-4">
+                <div class="d-flex align-items-center justify-content-between pb-sm-1 mb-5">
+                    <h2 class="h1 pr-3 mb-0">Te puede interesar</h2>
+                    <div class="tns-custom-controls cs-controls-inverse" id="custom-controls-related" tabindex="0">
+                        <button type="button" data-controls="prev" tabindex="-1">
+                            <i class="cxi-arrow-left"></i>
+                        </button>
+                        <button type="button" data-controls="next" tabindex="-1">
+                            <i class="cxi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cs-carousel pb-2">
+                    <div class="cs-carousel-inner-two" data-carousel-options=''>
+
+                        <!-- Item -->
+                        <div>
+                            <div class="card card-product mx-auto">
+                                <div class="card-product-img">
+                                    <a href="#" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    </a>
+                                    <div class="card-product-widgets-bottom">
+                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
+                                            data-placement="left" title="Add to wishlist"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-0 pb-2">
+                                    <h3 class="card-product-title text-truncate mb-2">
+                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                    </h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item -->
+                        <div>
+                            <div class="card card-product mx-auto">
+                                <div class="card-product-img">
+                                    <a href="#" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    </a>
+                                    <div class="card-product-widgets-bottom">
+                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
+                                            data-placement="left" title="Add to wishlist"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-0 pb-2">
+                                    <h3 class="card-product-title text-truncate mb-2">
+                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                    </h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item -->
+                        <div>
+                            <div class="card card-product mx-auto">
+                                <div class="card-product-img">
+                                    <a href="#" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    </a>
+                                    <div class="card-product-widgets-bottom">
+                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
+                                            data-placement="left" title="Add to wishlist"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-0 pb-2">
+                                    <h3 class="card-product-title text-truncate mb-2">
+                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                    </h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item -->
+                        <div>
+                            <div class="card card-product mx-auto">
+                                <div class="card-product-img">
+                                    <a href="#" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    </a>
+                                    <div class="card-product-widgets-bottom">
+                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
+                                            data-placement="left" title="Add to wishlist"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-0 pb-2">
+                                    <h3 class="card-product-title text-truncate mb-2">
+                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                    </h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item -->
+                        <div>
+                            <div class="card card-product mx-auto">
+                                <div class="card-product-img">
+                                    <a href="#" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    </a>
+                                    <div class="card-product-widgets-bottom">
+                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
+                                            data-placement="left" title="Add to wishlist"></a>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-0 pb-2">
+                                    <h3 class="card-product-title text-truncate mb-2">
+                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                    </h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="modal-sizing" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content border-0">
+                    <div class="modal-header border-0 pb-0 px-md-5 px-4 d-block position-relative">
+                        <h3 class="modal-title mt-4 mb-0 text-center">Size chart</h3>
+                        <button type="button" class="close position-absolute" style="top: 1.5rem; right: 1.5rem;"
+                            data-dismiss="modal" aria-label="Close">
+                            <i class="cxi-cross" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body px-md-5 px-4">
+                        <ul class="nav nav-tabs justify-content-center">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active">Women</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Men</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Kids</a>
+                            </li>
+                        </ul>
+                        <div class="table-responsive border rounded">
+                            <h4 class="mb-0 py-3 font-size-lg text-center">Footwear</h4>
+                            <table class="table table-striped mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">Europe</th>
+                                        <td>35</td>
+                                        <td>36</td>
+                                        <td>37</td>
+                                        <td>38</td>
+                                        <td>39</td>
+                                        <td>40</td>
+                                        <td>41</td>
+                                        <td>42</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">USA</th>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>6.5</td>
+                                        <td>7.5</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">United Kingdom</th>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">China</th>
+                                        <td>230/83</td>
+                                        <td>235/84</td>
+                                        <td>240/85</td>
+                                        <td>245/86</td>
+                                        <td>255/87</td>
+                                        <td>260/88</td>
+                                        <td>265/89</td>
+                                        <td>275/90</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">Russia</th>
+                                        <td>35</td>
+                                        <td>36</td>
+                                        <td>37</td>
+                                        <td>38</td>
+                                        <td>39</td>
+                                        <td>40</td>
+                                        <td>41</td>
+                                        <td>42</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">Italy</th>
+                                        <td>35</td>
+                                        <td>36</td>
+                                        <td>37</td>
+                                        <td>38</td>
+                                        <td>39</td>
+                                        <td>40</td>
+                                        <td>41</td>
+                                        <td>42</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">Italy</th>
+                                        <td>230</td>
+                                        <td>235</td>
+                                        <td>240</td>
+                                        <td>245</td>
+                                        <td>255</td>
+                                        <td>260</td>
+                                        <td>265</td>
+                                        <td>275</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr class="my-4 mx-md-n5 mx-n4">
+                        <div class="d-flex flex-lg-row flex-column align-items-center justify-content-center mb-4">
+                            <h6 class="mb-lg-0">I want to see size equivalence in: </h6>
+                            <ul class="nav nav-tabs mb-0 ml-lg-4">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link active">cm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Inches</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="table-responsive border rounded mb-4">
+                            <h4 class="mb-0 py-3 font-size-lg text-center">Equivalence in centimeters</h4>
+                            <table class="table table-striped mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-normal">Foot length</th>
+                                        <td>22.4 cm</td>
+                                        <td>23 cm</td>
+                                        <td>23.6 cm</td>
+                                        <td>24.3 cm</td>
+                                        <td>24.9 cm</td>
+                                        <td>25.5 cm</td>
+                                        <td>26.2 cm</td>
+                                        <td>26.8 cm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </ng-container>
 
@@ -171,7 +455,8 @@
             <h3 class="h6 mb-2 text-uppercase">No se encontraron productos</h3>
             <h2 class="h1 pb-lg-3">Es posible que sea un error</h2>
 
-            <a [routerLink]="['/productos']" class="btn btn-gradient btn-hover-shadow mb-4">Mostrar todos los productos</a>
+            <a [routerLink]="['/productos']" class="btn btn-gradient btn-hover-shadow mb-4">Mostrar todos los
+                productos</a>
         </div>
     </ng-container>
 

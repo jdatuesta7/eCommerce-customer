@@ -13,7 +13,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductosComponent } from './components/productos/index-producto/productos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
-import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 import { VendedoresComponent } from './components/vendedores/vendedores.component';
 import { ProductosVendedorComponent } from './components/productos-vendedor/productos-vendedor.component';
 import { LoginComponent } from './components/login/login.component';
@@ -30,7 +29,6 @@ import { ShowProductoComponent } from './components/productos/show-producto/show
     FooterComponent,
     ProductosComponent,
     ContactoComponent,
-    DetalleProductoComponent,
     VendedoresComponent,
     ProductosVendedorComponent,
     LoginComponent,

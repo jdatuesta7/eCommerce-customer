@@ -3,7 +3,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { InicioComponent } from "./components/inicio/inicio.component";
 import { ContactoComponent } from "./components/contacto/contacto.component";
 import { ProductosComponent } from "./components/productos/index-producto/productos.component";
-import { DetalleProductoComponent } from "./components/detalle-producto/detalle-producto.component";
 import { VendedoresComponent } from "./components/vendedores/vendedores.component";
 import { ProductosVendedorComponent } from "./components/productos-vendedor/productos-vendedor.component";
 import { LoginComponent } from "./components/login/login.component";
