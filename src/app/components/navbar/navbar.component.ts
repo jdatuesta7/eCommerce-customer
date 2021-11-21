@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
   public op_cart = false;
   public carrito_arr : Array<any> = [];
   public url;
+  public subtotal = 0;
+  public subtotalFormated = '';
 
   constructor(
     private _clienteService: ClienteService,
@@ -40,11 +42,14 @@ export class NavbarComponent implements OnInit {
 
             this._clienteService.obtener_carrito_cliente(this.usuario_datos._id, this.token).subscribe(
               response => {
-                console.log(response);
                 this.carrito_arr = response.data;
                 this.carrito_arr.forEach((element, index) => {
+                  this.subtotal = this.subtotal + parseInt(element.producto.precio);
                   this.carrito_arr[index].producto.precio = new Intl.NumberFormat().format(element.producto.precio);
                 });
+
+                this.subtotalFormated = new Intl.NumberFormat().format(this.subtotal);
+
               },
               error => {
                 console.log(error);

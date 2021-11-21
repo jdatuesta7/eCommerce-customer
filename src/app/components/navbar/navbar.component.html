@@ -71,7 +71,7 @@
                     <li class="nav-item align-self-center mb-0">
                         <a style="cursor: pointer;" class="nav-tool pr-lg-0" (click)="op_modalcart()">
                             <i class="cxi-cart nav-tool-icon"></i>
-                            <span class="badge badge-success align-middle mt-n1 ml-2 px-2 py-1 font-size-xs">0</span>
+                            <span class="badge badge-success align-middle mt-n1 ml-2 px-2 py-1 font-size-xs">{{ carrito_arr.length }}</span>
                         </a>
                     </li>
                     <li class="divider-vertical mb-0 d-lg-none d-block"></li>
@@ -129,7 +129,7 @@
 
     <!-- Header -->
     <div class="cs-offcanvas-cap align-items-center border-bottom">
-        <h2 class="h5 mb-0">Your cart (4)</h2>
+        <h2 class="h5 mb-0">Tu carrito ({{ carrito_arr.length }})</h2>
         <button (click)="op_modalcart()" class="close mr-n1" type="button" data-dismiss="offcanvas" aria-label="Close">
             <span class="h3 font-weight-normal mb-0" aria-hidden="true">×</span>
         </button>
@@ -139,14 +139,14 @@
     <div class="cs-offcanvas-body">
         <!-- Item -->
         <div class="media p-4 border-bottom mx-n4" *ngFor="let item of carrito_arr">
-            <a [routerLink]="['/productos/', item.slug]" style="min-width: 80px;">
+            <a [routerLink]="['/productos/', item.producto.slug]" target="_blank" style="min-width: 80px;">
                 <img [src]="url+'obtener_portada/'+item.producto.portada" width="80" alt="Product thumb">
             </a>
             <div class="media-body pl-3">
                 <div class="d-flex justify-content-between">
                     <div class="pr-2">
                         <h3 class="font-size-sm mb-3">
-                            <a href="shop-single.html" class="nav-link font-weight-bold">{{ item.producto.titulo }}</a>
+                            <a [routerLink]="['/productos/', item.producto.slug]" target="_blank" class="nav-link font-weight-bold">{{ item.producto.titulo }}</a>
                         </h3>
                         <div class="d-flex align-items-center">
                             <input type="number" class="form-control form-control-sm bg-light mr-3"
@@ -154,10 +154,10 @@
                             <div class="text-nowrap"><strong class="text-danger">${{ item.producto.precio }}</strong> 
                                 <s class="font-size-xs text-muted"></s></div>
                         </div>
-                        <button class="btn btn-link btn-sm text-decoration-none px-0 pb-0">
-                            Move to
+                        <!-- <button class="btn btn-link btn-sm text-decoration-none px-0 pb-0">
+                            Mover a 
                             <i class="cxi-heart ml-1"></i>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="nav-muted mr-n2">
                         <a href="#" class="nav-link px-2 mt-n2" data-toggle="tooltip" title=""
@@ -172,11 +172,11 @@
     <div class="cs-offcanvas-cap flex-column border-top">
         <div class="d-flex align-items-center justify-content-between mb-3 pb-1">
             <span class="text-muted mr-2">Subtotal:</span>
-            <span class="h5 mb-0">$198.65</span>
+            <span class="h5 mb-0">${{ subtotalFormated }}</span>
         </div>
         <a [routerLink]="['/checkout']" routerLinkActive="router-link-active"  class="btn btn-primary btn-lg btn-block">
             <i class="cxi-credit-card font-size-lg mt-n1 mr-1"></i>
-            Checkout
+            Proceder al pago
         </a>
     </div>
 </div>
