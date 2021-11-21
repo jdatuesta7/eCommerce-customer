@@ -42,7 +42,7 @@ export class ShowProductoComponent implements OnInit {
 
   ngOnInit(): void {
     tns({
-      container: '.cs-carousel-one',
+      container: '.cs-carousel-inner',
       controlsText: ['<i class="cxi-arrow-left"></i>', '<i class="cxi-arrow-right"></i>'],
       navPosition: "top",
       controlsPosition: "top",

@@ -18,7 +18,7 @@
         <div *ngFor="let item of nuevos_productos">
           <div class="card card-product">
             <div class="card-product-img">
-              <a href="shop-single.html" class="card-img-top">
+              <a [routerLink]="['productos/', item.slug]" routerLinkActive="router-link-active"  class="card-img-top">
                 <img [src]="url+'obtener_portada/'+item.portada" alt="{{ item.titulo }}">
               </a>
               <div class="card-product-widgets-bottom">
@@ -60,7 +60,7 @@
                 <div *ngFor="let item of productos_tendencia">
                     <div class="card card-product mx-auto">
                         <div class="card-product-img">
-                            <a href="shop-single.html" class="card-img-top">
+                            <a [routerLink]="['productos/', item.slug]" routerLinkActive="router-link-active"  class="card-img-top">
                                 <img [src]="url+'obtener_portada/'+item.portada" alt="{{ item.titulo }}" alt="Product image">
                             </a>
                             <div class="card-product-widgets-bottom">

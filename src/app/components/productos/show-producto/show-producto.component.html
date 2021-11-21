@@ -28,7 +28,7 @@
         </section>
 
         <!-- Single product -->
-        <section class="container py-md-2 py-3 mb-2">
+        <section class="container py-md-2 py-3 mb-5">
             <div class="row">
             <div class="col-md-6 mb-md-0 mb-4">
 
@@ -42,25 +42,16 @@
                             <span class="cs-gallery-caption">{{ producto.titulo }}</span>
                         </a>
 
-                        <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
+                        <!-- <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
                             <img class="rounded" [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
                             <span class="cs-gallery-caption">{{ producto.titulo }}</span>
-                        </a>
-
-                        <!-- Product gallery item -->
-                        <!-- <a class="cs-gallery-item" href="https://createx.createx.studio/assets/img/ecommerce/shop/single/01.jpg" data-sub-html='<h6 class="text-light">Gallery image caption #2</h6>'>
-                            <img class="rounded" src="https://createx.createx.studio/assets/img/ecommerce/shop/single/01.jpg" alt="Carousel image">
-                            <span class="cs-gallery-caption">Gallery image caption #2</span>
                         </a> -->
 
                     </div>
 
                     
                     <!-- Product gallery thumbnails -->
-                    <div class="cs-thumbnails" id="cs-thumbnails">
-                        <!-- <button type="button" data-nav="0" *ngFor="let item of producto.galeria">
-                            <img [src]="url+'obtener_portada/'+item.imagen" alt="Thumbnail">
-                        </button> -->
+                    <!-- <div class="cs-thumbnails" id="cs-thumbnails">
                         <button type="button" data-nav="0">
                             <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
                         </button>
@@ -70,19 +61,7 @@
                         <button type="button" data-nav="0">
                             <img [src]="url+'obtener_portada/'+producto.portada" alt="Thumbnail">
                         </button>
-                        <!-- <button type="button" data-nav="1">
-                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/02.jpg" alt="Thumbnail">
-                        </button>
-                        <button type="button" data-nav="2">
-                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/03.jpg" alt="Thumbnail">
-                        </button>
-                        <button type="button" data-nav="3">
-                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/04.jpg" alt="Thumbnail">
-                        </button>
-                        <button type="button" data-nav="4" class="video-indicator">
-                        <img src="https://createx.createx.studio/assets/img/ecommerce/shop/single/05.jpg" alt="Thumbnail">
-                        </button> -->
-                    </div>
+                    </div> -->
                 </div>
             </div>
             
@@ -135,7 +114,7 @@
                     </button>
                 </div>
                 <div class="col-lg-12" *ngIf="producto.admin">
-                    <h4 >Local {{ producto.admin.id_local }} - {{ producto.admin.nombre_local}}</h4>
+                    <a [routerLink]="['/local-comercial/productos/', producto.admin._id]" routerLinkActive="router-link-active" ><h4 >Local {{ producto.admin.id_local }} - {{ producto.admin.nombre_local}}</h4></a>
                 </div>
 
                 </form>
