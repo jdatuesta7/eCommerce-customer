@@ -11,6 +11,7 @@ import { PerfilComponent } from "./components/usuario/perfil/perfil.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { RegistrarUsuarioComponent } from "./components/usuario/registrar/registrar-usuario.component";
 import { ShowProductoComponent } from "./components/productos/show-producto/show-producto.component";
+import { CheckoutComponent } from "./components/checkout/checkout.component";
 
 const appRoute: Routes = [
     {path: 'login', component: LoginComponent},
@@ -27,6 +28,8 @@ const appRoute: Routes = [
     {path: 'contacto', component: ContactoComponent},
 
     {path: 'cuenta/perfil', component: PerfilComponent, canActivate: [AuthGuard]},
+    {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
+
 ];
 
 export const appRoutingProviders : any[] = [];

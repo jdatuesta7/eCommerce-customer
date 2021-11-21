@@ -42,7 +42,7 @@
 
                             <!-- Product gallery item -->
                             <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}"
-                                data-sub-html='<h6 class="text-light">Imagen #1</h6>'>
+                            data-sub-html='<h6 class="text-light">Imagen #1</h6>'>
                                 <img class="rounded" [src]="url+'obtener_portada/'+producto.portada"
                                     alt="Product image">
                                 <span class="cs-gallery-caption">{{ producto.titulo }}</span>
@@ -50,7 +50,7 @@
 
                             <ng-container *ngFor="let item of producto.galeria; let indice = index">
                                 <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+item.imagen }}"
-                                    data-sub-html='<h6 class="text-light">Imagen #</h6>'>
+                                    [innerHTML]="'<h6 class=\'text-light\'>Imagen #'+(indice+2)+'</h6>'">
                                     <h6 class="text-light">Gallery image caption #2</h6>
                                     <img class="rounded" [src]="url+'obtener_portada/'+item.imagen" alt="Product image">
                                     <span class="cs-gallery-caption">{{ producto.titulo }}</span>
@@ -100,22 +100,28 @@
 
                         <div class="col-lg-2 col-4 order-lg-3 order-3">
                             <div class="form-group">
-                                <select class="form-control custom-select" id="select-input">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>5</option>
-                                    <option>10</option>
+                                <select class="form-control custom-select" id="select-input" name="cantidad" [(ngModel)]="carrito.cantidad">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="10000">10000</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-5 order-lg-4 order-4">
-                            <button class="btn btn-block btn-primary">
+                            <button *ngIf="!btn_cart" type="button" class="btn btn-block btn-primary" (click)="agregar_producto()">
                                 <i class="cxi-cart mr-2"></i>
                                 Añadir al carrito
                             </button>
+
+                            <button *ngIf="btn_cart" type="button" disabled class="btn btn-block btn-primary">
+                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                Añadiendo...
+                            </button>
                         </div>
                         <div class="col-lg-4 col-8 order-lg-5 order-2">
-                            <button class="btn btn-block btn-outline-primary px-lg-4">
+                            <button type="button" class="btn btn-block btn-outline-primary px-lg-4">
                                 <i class="cxi-heart mr-2"></i>
                                 Favorito
                             </button>
@@ -159,17 +165,17 @@
                     </div>
 
                     <!-- Payment -->
-                    <!-- <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
+                    <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
                 <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
-                    <img src="../../assets/img/ecommerce/shop/single/cards/visa.jpg" alt="Visa" class="border rounded">
+                    <img src="assets/img/cards/visa.jpg" alt="Visa" class="border rounded">
                 </a>
                 <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
-                    <img src="../../assets/img/ecommerce/shop/single/cards/master-card.jpg" alt="Mastercard" class="border rounded">
+                    <img src="assets/img/cards/master-card.jpg" alt="Mastercard" class="border rounded">
                 </a>
                 <a href="#" class="d-inline-block mb-3">
-                    <img src="../../assets/img/ecommerce/shop/single/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
+                    <img src="assets/img/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
                 </a>
-                </div> -->
+                </div>
                 </div>
             </div>
         </section>

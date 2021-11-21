@@ -5,6 +5,7 @@ import { GLOBAL } from 'src/app/services/GLOBAL';
 
 declare var tns: any;
 declare var lightGallery: any;
+declare var iziToast:any;
 
 @Component({
   selector: 'app-show-producto',
@@ -17,10 +18,16 @@ export class ShowProductoComponent implements OnInit {
   public producto: any = {};
   public url;
   public recomendados: Array<any> = [];
+  public carrito : any = {
+    cantidad : 1
+  };
+  public token : any;
+  public btn_cart = false;
 
   constructor(
     private _clienteService: ClienteService,
     private _route: ActivatedRoute,
+    private _router: Router
   ) {
     this.url = GLOBAL.url;
     this._route.params.subscribe(
@@ -101,6 +108,64 @@ export class ShowProductoComponent implements OnInit {
     }, 500);
 
 
+  }
+
+  agregar_producto(){
+
+    if(localStorage.getItem('token')){
+      this.token = localStorage.getItem('token');
+      if (this.carrito.cantidad <= this.producto.stock) {
+        let data = {
+          producto: this.producto._id,
+          cliente: localStorage.getItem('_id'),
+          cantidad: this.carrito.cantidad
+        }
+        
+        this.btn_cart = true;
+        this._clienteService.agregar_carrito_cliente(data, this.token).subscribe(
+          response => {
+            console.log(response);
+            iziToast.show({
+              title: 'OK',
+              color: 'green',
+              position: 'topRight',
+              titleColor: '#000000',
+              message: 'Se ha agregado el producto al carrito'
+            });
+
+            this.btn_cart = false;
+          },
+          error => {
+            console.log(error);
+            iziToast.show({
+              title: 'ERROR',
+              color: 'red',
+              position: 'topRight',
+              message: error.error.message
+            });
+
+            this.btn_cart = false;
+          }
+        );
+      } else {
+        iziToast.show({
+          title: 'ERROR',
+          color: 'red',
+          position: 'topRight',
+          message: 'La maxima cantidad disponible es: ' + this.producto.stock
+        })
+      }
+    }else{
+      this._router.navigate(['/login']);
+
+      iziToast.show({
+        title: 'ERROR',
+        color: 'red',
+        position: 'topRight',
+        message: 'Debe iniciar sesion para poder añadir al carrito'
+      });
+    }
+    
   }
 
 

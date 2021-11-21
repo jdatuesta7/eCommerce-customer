@@ -156,9 +156,14 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-primary btn-block">
+                                <button *ngIf="!btn_cart" type="button" class="btn btn-primary btn-block" (click)="agregar_producto(item._id)">
                                     <i class="cxi-cart align-middle mt-n1 mr-2"></i>
                                     Añadir al carrito
+                                </button>
+
+                                <button *ngIf="btn_cart" type="button" disabled class="btn btn-primary btn-block">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    Añadiendo...
                                 </button>
                             </div>
                         </div>

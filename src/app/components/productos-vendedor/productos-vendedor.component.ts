@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { GLOBAL } from 'src/app/services/GLOBAL';
 
+declare var iziToast:any;
+
 @Component({
   selector: 'app-productos-vendedor',
   templateUrl: './productos-vendedor.component.html',
@@ -14,6 +16,11 @@ export class ProductosVendedorComponent implements OnInit {
   public productos_vendedor: Array<any> = [];
   public local = '';
   public url;
+  public carrito : any = {
+    cantidad : 1
+  };
+  public token : any;
+  public btn_cart = false;
 
   constructor(
     private _clienteService: ClienteService,
@@ -65,6 +72,57 @@ export class ProductosVendedorComponent implements OnInit {
 
   reset_productos() {
     this._router.navigate(['/productos']);
+  }
+
+  agregar_producto(id:any){
+
+    if(localStorage.getItem('token')){
+      this.token = localStorage.getItem('token');
+      
+      let data = {
+        producto: id,
+        cliente: localStorage.getItem('_id'),
+        cantidad: 1
+      }
+      
+      this.btn_cart = true;
+      this._clienteService.agregar_carrito_cliente(data, this.token).subscribe(
+        response => {
+          console.log(response);
+          iziToast.show({
+            title: 'OK',
+            color: 'green',
+            position: 'topRight',
+            titleColor: '#000000',
+            message: 'Se ha agregado el producto al carrito'
+          });
+
+          this.btn_cart = false;
+        },
+        error => {
+          console.log(error);
+          iziToast.show({
+            title: 'ERROR',
+            color: 'red',
+            position: 'topRight',
+            message: error.error.message
+          });
+
+          this.btn_cart = false;
+        }
+      );
+      
+    }else{
+      this._router.navigate(['/login']);
+
+      iziToast.show({
+        title: 'ERROR',
+        color: 'red',
+        position: 'topRight',
+        message: 'Debe iniciar sesion para poder añadir al carrito'
+      });
+    }
+    
   }
 
 }

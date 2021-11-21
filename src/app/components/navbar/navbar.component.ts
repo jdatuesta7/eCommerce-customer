@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 
+declare var $:any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public usuario : any = undefined;
   public usuario_datos : any = {};
   public categorias_global : any = {};
+  public op_cart = false;
 
   constructor(
     private _clienteService: ClienteService,
@@ -62,6 +64,16 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
     localStorage.clear();
     this._router.navigate(['/']);
+  }
+
+  op_modalcart(){
+    if (!this.op_cart) {
+      this.op_cart = true;
+      $('#cart').addClass('show');
+    } else {
+      this.op_cart = false;
+      $('#cart').removeClass('show');
+    }
   }
 
 }
