@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { GLOBAL } from 'src/app/services/GLOBAL';
 
 declare var $:any;
 @Component({
@@ -16,6 +17,8 @@ export class NavbarComponent implements OnInit {
   public usuario_datos : any = {};
   public categorias_global : any = {};
   public op_cart = false;
+  public carrito_arr : Array<any> = [];
+  public url;
 
   constructor(
     private _clienteService: ClienteService,
@@ -23,6 +26,7 @@ export class NavbarComponent implements OnInit {
   ) { 
     this.token = localStorage.getItem('token');
     this.id = localStorage.getItem('_id');
+    this.url = GLOBAL.url;
 
     if(this.token && this.id){
 
@@ -33,6 +37,19 @@ export class NavbarComponent implements OnInit {
   
           if(localStorage.getItem('usuario')){
             this.usuario_datos = JSON.parse(localStorage.getItem('usuario')!);
+
+            this._clienteService.obtener_carrito_cliente(this.usuario_datos._id, this.token).subscribe(
+              response => {
+                console.log(response);
+                this.carrito_arr = response.data;
+                this.carrito_arr.forEach((element, index) => {
+                  this.carrito_arr[index].producto.precio = new Intl.NumberFormat().format(element.producto.precio);
+                });
+              },
+              error => {
+                console.log(error);
+              }
+            );
           }else{
             this.usuario_datos = undefined;
           }
