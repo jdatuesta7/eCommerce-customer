@@ -20,6 +20,9 @@ export class InicioComponent implements OnInit {
     this._clienteService.listar_productos_nuevos_publicos().subscribe(
       response => {
         this.nuevos_productos = response.data;
+        this.nuevos_productos.forEach((element, index) => {
+          this.nuevos_productos[index].precio = new Intl.NumberFormat().format(element.precio);
+        });
         console.log(response);
       },
       error => {
@@ -30,6 +33,9 @@ export class InicioComponent implements OnInit {
     this._clienteService.listar_productos_tendencia_publicos().subscribe(
       response => {
         this.productos_tendencia = response.data;
+        this.productos_tendencia.forEach((element, index) => {
+          this.productos_tendencia[index].precio = new Intl.NumberFormat().format(element.precio);
+        });
         console.log(response);
       },
       error => {

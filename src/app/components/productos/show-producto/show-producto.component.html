@@ -13,7 +13,8 @@
                     <a [routerLink]="['/productos']" routerLinkActive="router-link-active">Productos</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a *ngIf="producto.categoria" [routerLink]="['/productos/categoria/', producto.categoria.toLowerCase()]"
+                    <a *ngIf="producto.categoria"
+                        [routerLink]="['/productos/categoria/', producto.categoria.toLowerCase()]"
                         routerLinkActive="router-link-active">{{ producto.categoria }}</a>
                 </li>
                 <li class="breadcrumb-item active">
@@ -28,7 +29,8 @@
         <!-- Page title -->
         <section class="container d-md-flex align-items-center justify-content-between py-1 py-md-2">
             <h1>{{ producto.titulo }}</h1>
-            <span *ngIf="producto._id" class="text-muted"><strong>Art. ID.</strong> {{ producto._id.toUpperCase() }}</span>
+            <span *ngIf="producto._id" class="text-muted"><strong>Art. ID.</strong> {{ producto._id.toUpperCase()
+                }}</span>
         </section>
 
         <!-- Single product -->
@@ -41,17 +43,14 @@
                         <div class="cs-carousel-inner" data-carousel-options=''>
 
                             <!-- Product gallery item -->
-                            <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}"
-                            data-sub-html='<h6 class="text-light">Imagen #1</h6>'>
+                            <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+producto.portada }}">
                                 <img class="rounded" [src]="url+'obtener_portada/'+producto.portada"
                                     alt="Product image">
                                 <span class="cs-gallery-caption">{{ producto.titulo }}</span>
                             </a>
 
-                            <ng-container *ngFor="let item of producto.galeria; let indice = index">
-                                <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+item.imagen }}"
-                                    [innerHTML]="'<h6 class=\'text-light\'>Imagen #'+(indice+2)+'</h6>'">
-                                    <h6 class="text-light">Gallery image caption #2</h6>
+                            <ng-container *ngFor="let item of producto.galeria">
+                                <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+item.imagen }}">
                                     <img class="rounded" [src]="url+'obtener_portada/'+item.imagen" alt="Product image">
                                     <span class="cs-gallery-caption">{{ producto.titulo }}</span>
                                 </a>
@@ -100,7 +99,8 @@
 
                         <div class="col-lg-2 col-4 order-lg-3 order-3">
                             <div class="form-group">
-                                <select class="form-control custom-select" id="select-input" name="cantidad" [(ngModel)]="carrito.cantidad">
+                                <select class="form-control custom-select" id="select-input" name="cantidad"
+                                    [(ngModel)]="carrito.cantidad">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="5">5</option>
@@ -110,13 +110,15 @@
                             </div>
                         </div>
                         <div class="col-lg-5 order-lg-4 order-4">
-                            <button *ngIf="!btn_cart" type="button" class="btn btn-block btn-primary" (click)="agregar_producto()">
+                            <button *ngIf="!btn_cart" type="button" class="btn btn-block btn-primary"
+                                (click)="agregar_producto()">
                                 <i class="cxi-cart mr-2"></i>
                                 Añadir al carrito
                             </button>
 
                             <button *ngIf="btn_cart" type="button" disabled class="btn btn-block btn-primary">
-                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                <span class="spinner-border spinner-border-sm me-2" role="status"
+                                    aria-hidden="true"></span>
                                 Añadiendo...
                             </button>
                         </div>
@@ -166,16 +168,16 @@
 
                     <!-- Payment -->
                     <div class="pb-3 text-nowrap" data-simplebar data-simplebar-auto-hide="false">
-                <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
-                    <img src="assets/img/cards/visa.jpg" alt="Visa" class="border rounded">
-                </a>
-                <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
-                    <img src="assets/img/cards/master-card.jpg" alt="Mastercard" class="border rounded">
-                </a>
-                <a href="#" class="d-inline-block mb-3">
-                    <img src="assets/img/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
-                </a>
-                </div>
+                        <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
+                            <img src="assets/img/cards/visa.jpg" alt="Visa" class="border rounded">
+                        </a>
+                        <a href="#" class="d-inline-block mb-3 mr-xl-4 mr-3">
+                            <img src="assets/img/cards/master-card.jpg" alt="Mastercard" class="border rounded">
+                        </a>
+                        <a href="#" class="d-inline-block mb-3">
+                            <img src="assets/img/cards/pay-pal.jpg" alt="PayPal" class="border rounded">
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -210,7 +212,8 @@
                                 </div>
                                 <div class="card-body bg-0 pb-2">
                                     <h3 class="card-product-title text-truncate mb-2">
-                                        <a [routerLink]="['/productos/', item.slug]" target="_blank" class="nav-link">{{ item.titulo }}</a>
+                                        <a [routerLink]="['/productos/', item.slug]" target="_blank" class="nav-link">{{
+                                            item.titulo }}</a>
                                     </h3>
                                     <div class="d-flex align-items-center">
                                         <span class="h5 d-inline-block mb-0">${{ item.precio }}</span>

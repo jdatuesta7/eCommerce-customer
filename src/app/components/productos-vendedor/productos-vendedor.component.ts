@@ -43,6 +43,9 @@ export class ProductosVendedorComponent implements OnInit {
           response => {
             console.log(response.data);
             this.productos_vendedor = response.data;
+            this.productos_vendedor.forEach((element, index) => {
+              this.productos_vendedor[index].precio = new Intl.NumberFormat().format(element.precio);
+            });
 
           },
           error => {
@@ -98,6 +101,7 @@ export class ProductosVendedorComponent implements OnInit {
           });
 
           this.btn_cart = false;
+          
         },
         error => {
           console.log(error);
