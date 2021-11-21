@@ -102,4 +102,10 @@ export class ClienteService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this._http.get(this.url+'obtener_producto_publico/'+slug, {headers: headers});
   }
+
+  listar_productos_recomendados_publicos(categoria:any):Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.get(this.url+'listar_productos_recomendados_publicos/'+categoria, {headers: headers});
+  }
+
 }

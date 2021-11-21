@@ -10,10 +10,14 @@
                     <a routerLink="/"><i class="cxi-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a routerLink="/productos">Productos</a>
+                    <a [routerLink]="['/productos']" routerLinkActive="router-link-active">Productos</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a *ngIf="producto.categoria" [routerLink]="['/productos/categoria/', producto.categoria.toLowerCase()]"
+                        routerLinkActive="router-link-active">{{ producto.categoria }}</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a>Detalles</a>
+                    <a>{{ producto.titulo }}</a>
                 </li>
             </ol>
         </div>
@@ -24,7 +28,7 @@
         <!-- Page title -->
         <section class="container d-md-flex align-items-center justify-content-between py-1 py-md-2">
             <h1>{{ producto.titulo }}</h1>
-            <span class="text-muted"><strong>Art. ID.</strong> {{ producto._id }}</span>
+            <span *ngIf="producto._id" class="text-muted"><strong>Art. ID.</strong> {{ producto._id.toUpperCase() }}</span>
         </section>
 
         <!-- Single product -->
@@ -45,11 +49,10 @@
                             </a>
 
                             <ng-container *ngFor="let item of producto.galeria; let indice = index">
-                                <a class="cs-gallery-item"  href="{{ url+'obtener_portada/'+item.imagen }}"
-                                    data-sub-html='<h6 class="text-light">Imagen #...</h6>'> 
+                                <a class="cs-gallery-item" href="{{ url+'obtener_portada/'+item.imagen }}"
+                                    data-sub-html='<h6 class="text-light">Imagen #</h6>'>
                                     <h6 class="text-light">Gallery image caption #2</h6>
-                                    <img class="rounded" [src]="url+'obtener_portada/'+item.imagen"
-                                        alt="Product image">
+                                    <img class="rounded" [src]="url+'obtener_portada/'+item.imagen" alt="Product image">
                                     <span class="cs-gallery-caption">{{ producto.titulo }}</span>
                                 </a>
                             </ng-container>
@@ -146,7 +149,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-8 mb-md-0 mb-4">
                                             <p>{{ producto.descripcion }}</p>
-                                            <p class="mt-2">{{ producto.contenido }}</p>
+                                            <p class="mt-2" [innerHTML]="producto.contenido"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +177,7 @@
         <section class="py-5" style="background-color: #e5e8ed;">
             <div class="container my-lg-2 py-2 py-md-4">
                 <div class="d-flex align-items-center justify-content-between pb-sm-1 mb-5">
-                    <h2 class="h1 pr-3 mb-0">Te puede interesar</h2>
+                    <h2 class="h1 pr-3 mb-0">Productos recomendados</h2>
                     <div class="tns-custom-controls cs-controls-inverse" id="custom-controls-related" tabindex="0">
                         <button type="button" data-controls="prev" tabindex="-1">
                             <i class="cxi-arrow-left"></i>
@@ -188,11 +191,11 @@
                     <div class="cs-carousel-inner-two" data-carousel-options=''>
 
                         <!-- Item -->
-                        <div>
+                        <div *ngFor="let item of recomendados">
                             <div class="card card-product mx-auto">
                                 <div class="card-product-img">
-                                    <a href="#" class="card-img-top">
-                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
+                                    <a [routerLink]="['/productos/', item.slug]" target="_blank" class="card-img-top">
+                                        <img [src]="url+'obtener_portada/'+item.portada" alt="Product image">
                                     </a>
                                     <div class="card-product-widgets-bottom">
                                         <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
@@ -201,102 +204,10 @@
                                 </div>
                                 <div class="card-body bg-0 pb-2">
                                     <h3 class="card-product-title text-truncate mb-2">
-                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
+                                        <a [routerLink]="['/productos/', item.slug]" target="_blank" class="nav-link">{{ item.titulo }}</a>
                                     </h3>
                                     <div class="d-flex align-items-center">
-                                        <span class="h5 d-inline-block mb-0">$89.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div>
-                            <div class="card card-product mx-auto">
-                                <div class="card-product-img">
-                                    <a href="#" class="card-img-top">
-                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                                    </a>
-                                    <div class="card-product-widgets-bottom">
-                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
-                                            data-placement="left" title="Add to wishlist"></a>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-0 pb-2">
-                                    <h3 class="card-product-title text-truncate mb-2">
-                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
-                                    </h3>
-                                    <div class="d-flex align-items-center">
-                                        <span class="h5 d-inline-block mb-0">$89.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div>
-                            <div class="card card-product mx-auto">
-                                <div class="card-product-img">
-                                    <a href="#" class="card-img-top">
-                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                                    </a>
-                                    <div class="card-product-widgets-bottom">
-                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
-                                            data-placement="left" title="Add to wishlist"></a>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-0 pb-2">
-                                    <h3 class="card-product-title text-truncate mb-2">
-                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
-                                    </h3>
-                                    <div class="d-flex align-items-center">
-                                        <span class="h5 d-inline-block mb-0">$89.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div>
-                            <div class="card card-product mx-auto">
-                                <div class="card-product-img">
-                                    <a href="#" class="card-img-top">
-                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                                    </a>
-                                    <div class="card-product-widgets-bottom">
-                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
-                                            data-placement="left" title="Add to wishlist"></a>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-0 pb-2">
-                                    <h3 class="card-product-title text-truncate mb-2">
-                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
-                                    </h3>
-                                    <div class="d-flex align-items-center">
-                                        <span class="h5 d-inline-block mb-0">$89.95</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div>
-                            <div class="card card-product mx-auto">
-                                <div class="card-product-img">
-                                    <a href="#" class="card-img-top">
-                                        <img [src]="url+'obtener_portada/'+producto.portada" alt="Product image">
-                                    </a>
-                                    <div class="card-product-widgets-bottom">
-                                        <a href="#" class="btn-wishlist ml-auto" data-toggle="tooltip"
-                                            data-placement="left" title="Add to wishlist"></a>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-0 pb-2">
-                                    <h3 class="card-product-title text-truncate mb-2">
-                                        <a href="#" class="nav-link">Metal bridge sunglasses</a>
-                                    </h3>
-                                    <div class="d-flex align-items-center">
-                                        <span class="h5 d-inline-block mb-0">$89.95</span>
+                                        <span class="h5 d-inline-block mb-0">${{ item.precio }}</span>
                                     </div>
                                 </div>
                             </div>

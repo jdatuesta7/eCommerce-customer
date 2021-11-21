@@ -16,11 +16,11 @@ export class ShowProductoComponent implements OnInit {
   public slug = '';
   public producto: any = {};
   public url;
+  public recomendados: Array<any> = [];
 
   constructor(
     private _clienteService: ClienteService,
     private _route: ActivatedRoute,
-    private _router: Router
   ) {
     this.url = GLOBAL.url;
     this._route.params.subscribe(
@@ -30,15 +30,28 @@ export class ShowProductoComponent implements OnInit {
         this._clienteService.obtener_producto_publico(this.slug).subscribe(
           response => {
             this.producto = response.data;
-            console.log(this.producto);
+            this.producto.precio = new Intl.NumberFormat().format(this.producto.precio);
+
+            this._clienteService.listar_productos_recomendados_publicos(this.producto.categoria).subscribe(
+              response => {
+                this.recomendados = response.data;
+                this.recomendados.forEach((element, index) => {
+                  this.recomendados[index].precio = new Intl.NumberFormat().format(this.recomendados[index].precio);
+                });
+              },
+              error => {
+                console.log(error);
+              }
+            );
           },
           error => {
             console.log(error);
           }
         )
-        console.log(this.slug);
       }
     );
+
+    
   }
 
   ngOnInit(): void {
