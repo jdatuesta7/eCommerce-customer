@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { GLOBAL } from 'src/app/services/GLOBAL';
+import { io } from "socket.io-client";
 
 declare var iziToast:any;
 
@@ -21,6 +22,7 @@ export class ProductosVendedorComponent implements OnInit {
   };
   public token : any;
   public btn_cart = false;
+  public socket = io('http://localhost:4201');
 
   constructor(
     private _clienteService: ClienteService,
@@ -100,8 +102,8 @@ export class ProductosVendedorComponent implements OnInit {
             message: 'Se ha agregado el producto al carrito'
           });
 
+          this.socket.emit('add-carrito-add', {data: true});
           this.btn_cart = false;
-          
         },
         error => {
           console.log(error);
