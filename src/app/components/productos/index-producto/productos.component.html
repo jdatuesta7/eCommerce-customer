@@ -273,7 +273,7 @@
                                                 routerLinkActive="router-link-active">{{ item.categoria }}</a>
                                         </div>
                                         <div class="col-12">
-                                            <a href="">{{ item.admin.nombre_local }}</a>
+                                            <a [routerLink]="['/local-comercial/productos/', item.admin._id]" routerLinkActive="router-link-active" >{{ item.admin.nombre_local }}</a>
                                         </div>
                                     </div>
                                     <button *ngIf="!btn_cart" type="button" class="btn btn-primary btn-block" (click)="agregar_producto(item._id)">
