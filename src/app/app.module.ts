@@ -21,6 +21,7 @@ import { SidebarComponent } from './components/usuario/sidebar/sidebar.component
 import { RegistrarUsuarioComponent } from './components/usuario/registrar/registrar-usuario.component';
 import { ShowProductoComponent } from './components/productos/show-producto/show-producto.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { DireccionesComponent } from './components/usuario/direcciones/direcciones.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     RegistrarUsuarioComponent,
     ShowProductoComponent,
     CheckoutComponent,
+    DireccionesComponent,
   ],
   imports: [
     BrowserModule,
